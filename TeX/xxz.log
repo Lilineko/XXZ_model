@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.5)  2 AUG 2020 20:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.10.5)  3 AUG 2020 16:03
 entering extended mode
-**./qpd.tex
-(qpd.tex
+**./xxz.tex
+(xxz.tex
 LaTeX2e <2017-04-15>
 Babel <3.10> and hyphenation patterns for 75 language(s) loaded.
 (D:\Programy\MiKTeX\tex\latex\base\article.cls
@@ -1607,8 +1607,8 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
-) (qpd.aux)
-\openout1 = `qpd.aux'.
+) (xxz.aux)
+\openout1 = `xxz.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
 LaTeX Font Info:    ... okay on input line 61.
@@ -1723,7 +1723,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 64.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{C:/Users/pwrzo/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] (qpd.au
+{C:/Users/pwrzo/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] (xxz.au
 x) ) 
 Here is how much of TeX's memory you used:
  13231 strings out of 493323
@@ -1742,7 +1742,7 @@ fonts/type1/public/amsfonts/cm/cmr6.pfb><D:/Programy/MiKTeX/fonts/type1/public/
 amsfonts/cm/cmr8.pfb><D:/Programy/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.
 pfb><D:/Programy/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><D:/Programy/M
 iKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on qpd.pdf (2 pages, 127099 bytes).
+Output written on xxz.pdf (2 pages, 127099 bytes).
 PDF statistics:
  53 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
