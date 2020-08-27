@@ -99,9 +99,9 @@ H_{\perp} = J\sum_{\mean{i,j}} S_i^z S_j^z - \frac{1}{2}\left(S_i^+ S_j^+ + S_i^
 \end{equation}
 
 \subsection{Clarification of the notation}
-Let us comment on why we call $H_{\perp}$ the \textit{rotated} Heisenberg Hamiltonian. Consider a transformation rotating spins at every second site, i.e. in the sublattice $\mathcal{B}$,
+Let us comment on why we call $H_{\perp}$ the \textit{rotated} Heisenberg Hamiltonian. Consider a transformation rotating spins at every second site, e.g. on the sublattice $\mathcal{B}$,
 \begin{equation}
-\srot : \forall j\in\mathcal{B} \ (S_j^{\pm} \rightarrow S_j^{\mp}) \land (S_j^{z} \rightarrow -S_j^{\pm}).
+\srot : \forall j\in\mathcal{B} \ (S_j^{\pm} \rightarrow S_j^{\mp}) \land (S_j^{z} \rightarrow -S_j^{z}).
 \end{equation}
 The stated-above transformation reveals the relation between $H_{\parallel}$ and $H_{\perp}$, namely,
 \begin{equation}\label{eq:rot_relation}
@@ -113,16 +113,22 @@ The first come from the magnetization conservation present in the Heisenberg mod
 
 The second reason for the choice of the notation comes from the type of the \textit{classical} ground state of the system realised by these models. For ferromagnetic coupling constant $(J < 0)$ the ground state of $H_{\parallel}$ is the Ising ferromagnet (twofold degenerated due to $Z \to -Z$ symmetry of the system), i.e. neighbouring spins are aligned parallel in the \textit{classical} ground state. Accordingly, for antiferromagnetic coupling constant $(J > 0)$ the ground state of $H_{\perp}$ it the Ising antiferromagnet (also twofold degenerated due $Z \to -Z$ symmetry), i.e. neighbouring spins are aligned anti-parallel in the \textit{classical} ground state.
 
-\subsection{Magnetization and Anti-magnetization}
+\subsection{Magnetization and Staggered Magnetization}
 In order to understand how the classical antiferromagnet arises as the ground state of $H_{\perp}$ for $J > 0$ it is enough to look at the Eq.~(\ref{eq:rot_relation}). Rotating the operators in the Heisenberg model and spins in the sublattice $\mathcal{B}$ one does not change the physics of the system. Therefore given the eigenstates $\ket{\psi_n}$ of $H_{\parallel}$ Hamiltonian with corresponding energies $E_n$ one easily obtains eigenstates of the $H_{\perp}$ by reversing spins at sublattice $\mathcal{B}$. Then corresponding energies are $-E_n$. Incorporating the sign change into a coupling constant we see that Ising antiferromagnet is the ground state of $H_{\perp}$ for antiferromagnetic $J > 0$. 
 
-Above-described relation between eigenstates of these two Hamiltonians allow one to make even stronger statement, namely: In order to understand $H_{\perp}$ one just need to consider the Heisenberg model for opposing sign of the coupling constant $J$. Thus, any quantity of $H_{\parallel}$ should have its corresponding \textit{anti-quantity} in $H_{\perp}$ related by the rotation of $\mathcal{B}$ sublattice. Therefore, for example, if $H_{\parallel}$ Hamiltonian conserves the magnetization,
+Above-described relation between eigenstates of these two Hamiltonians allow one to make even stronger statement, namely: in order to understand $H_{\perp}$ one just need to consider the Heisenberg model for opposing sign of the coupling constant $J$. Thus, any quantity of $H_{\parallel}$ should have its corresponding \textit{anti}-quantity in $H_{\perp}$ related by the rotation of $\mathcal{B}$ sublattice. Therefore, for example, if $H_{\parallel}$ Hamiltonian conserves the magnetization,
 \begin{equation}
 M = \sum_{i = 0,\hdots,N-1} S_i^z,
 \end{equation}
-then $H_{\perp}$ Hamiltonian conserves the \textit{anti-magnetization}
+then $H_{\perp}$ Hamiltonian conserves the staggered magnetization
 \begin{equation}
-\bar{M} = \sum_{i = 0,\hdots,N-1} (-1)^i S_i^z.
+M_s = \sum_{i = 0,\hdots,N-1} (-1)^i S_i^z.
+\end{equation}
+
+\subsection{Interplay of the two parts of the Hamiltonian}
+The ground state of the Heisenberg model $H_{\parallel}$ for antiferromagnetic coupling constant is given by a certain linear combination of the $S^z$ spins configurations. It belongs to the subspace where absolute value of the magnetization is smallest possible, i.e. $M = 0$ for even number of spins or $|M| = 1$ for odd number of spins. Accordingly the ground state of rotated Heisenberg $H_{\perp}$ for ferromangetic coupling constant is a linear combination of states belonging to the subspace with staggered magnetization $M_s = 0$ (assuming even number of spins). Thus the full model tries to maximize magnetization and minimize staggered magnetization. It is important to notice that this is not the same and the two parts of the Hamiltonian play towards rather orthogonal than totally parallel or antiparallel goal. While pure ferromagenetic Heisenberg model prefers simple ferromagnetic ground state the contribution from rotated Heisenberg will lead to changes in magnetization via double spin flips processes, i.e. $S_i^+ S_j^+ + S_i^- S_j^-$. This will further unlock the $S_i^+ S_j^- + S_i^- S_j^+$ terms leading to the break of the staggered magnetization conservation of the pure rotated Heisenberg. In the end the ground state will be a complicated linear combination of states belonging to various magnetization and staggered magnetization subspaces. Shortly speaking,
+\begin{equation}
+[H_{\parallel}, H_{\perp}] \neq 0.
 \end{equation}
 
 \section{TODO}
