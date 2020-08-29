@@ -1,3 +1,5 @@
+using Gadfly
+
 function main()
     # construct the basis (with reorganization into proper subspaces)
     # calculate the matrix of the Hamiltonian
