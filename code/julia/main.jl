@@ -4,7 +4,7 @@ using LinearAlgebra
 function main()
     systemSize = 8
     couplingJ = -1.0
-    anisotropy = 0.999 # for anisotropy = 1 we have additional degeneration
+    anisotropy = 0.999 # for anisotropy = 1 we have additional degeneration, thus allowed range is [0, 1)
     magnonInteractions = 1
 
     # construct the basis (with reorganization into proper subspaces)

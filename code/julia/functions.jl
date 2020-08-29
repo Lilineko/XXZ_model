@@ -31,25 +31,18 @@ function applyHamiltonian(state, systemSize, couplingJ, anisotropy, magnonIntera
     magnonRepresentation = digits(state, base = 2, pad = systemSize)
     resultingStates = [state]
     resultingTransitions = [0.0]
-    V = 0
+    V, T = 0, 0
     for siteI in 1:systemSize
         siteJ = mod1(siteI + 1, systemSize)
         V += couplingJ * (0.25 - 0.5 * (magnonRepresentation[siteI] + magnonRepresentation[siteJ]) + magnonInteractions * (magnonRepresentation[siteI] * magnonRepresentation[siteJ]))
-        tempStates = []
-        tempTransitions = []
+        newState = xor(state, 2^(siteI-1) + 2^(siteJ-1))
         if (magnonRepresentation[siteI] + magnonRepresentation[siteJ]) == 1
-            newState = xor(state, 2^(siteI-1) + 2^(siteJ-1))
             T = 0.25 * couplingJ * (1 + anisotropy)
-            push!(tempStates, newState)
-            push!(tempTransitions, T)
         else
-            newState = xor(state, 2^(siteI-1) + 2^(siteJ-1))
             T = -0.25 * couplingJ * (1 - anisotropy)
-            push!(tempStates, newState)
-            push!(tempTransitions, T)
         end
-        append!(resultingStates, tempStates)
-        append!(resultingTransitions, tempTransitions)
+        push!(resultingStates, newState)
+        push!(resultingTransitions, T)
     end
     resultingTransitions[1] = V
     (resultingStates, resultingTransitions)
@@ -95,8 +88,7 @@ function diagonalizeHamiltonian(blockHamiltonian)
     result
 end
 
-# investigate degeneration
-function getGroundStateSubspace(factorization)
+function getGroundStateSubspace(factorization) # in case of the Heisenberg model there are 2S + 1 degenerated ground states for ferromagnetic coupling constant (this case should be calculated separately, e.g. assumin sponataneous symmetry breaking)
     groundStateEnergy = Inf
     groundStateSubspaceIndex = 0
     for it in 1:length(factorization)
