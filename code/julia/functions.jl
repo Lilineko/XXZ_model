@@ -52,7 +52,7 @@ function applyHamiltonian(state, systemSize, couplingJ, anisotropy, magnonIntera
         append!(resultingTransitions, tempTransitions)
     end
     resultingTransitions[1] = V
-    result = (resultingStates, resultingTransitions)
+    (resultingStates, resultingTransitions)
 end
 
 function constructSubspaceMatrix(subspace, systemSize, couplingJ, anisotropy, magnonInteractions)
@@ -65,6 +65,31 @@ function constructSubspaceMatrix(subspace, systemSize, couplingJ, anisotropy, ma
             for js in 1:length(adjacentStates)
                 result[is, searchsorted(subspace, adjacentStates[js])[1]] = coefficients[js]
             end
+        end
+    end
+    result
+end
+
+function constructBlockHamiltonian(basis, systemSize, couplingJ, anisotropy, magnonInteractions)
+    result = []
+    for subspace in basis
+        matrixBlock = constructSubspaceMatrix(subspace, systemSize, couplingJ, anisotropy, magnonInteractions)
+        push!(result, matrixBlock)
+    end
+    result
+end
+
+function diagonalizeBlock(matrixBlock)
+
+end
+
+function diagonalizeHamiltonian(blockHamiltonian)
+    result = []
+    for matrixBlock in blockHamiltonian
+        if length(matrixBlock) > 0
+            push!(result, diagonalizeBlock(matrixBlock))
+        else
+            push!(result, nothing)
         end
     end
     result

@@ -1,9 +1,16 @@
 using Gadfly
 
 function main()
+    systemSize = 8
+    couplingJ = -1.0
+    anisotropy = 0
+    magnonInteractions = 1
     # construct the basis (with reorganization into proper subspaces)
+    basis = constructBasis(systemSize)
     # calculate the matrix of the Hamiltonian
+    blockHamiltonian = constructBlockHamiltonian(basis, systemSize, couplingJ, anisotropy, magnonInteractions)
     # diagonalize all the subspaces
+    
     # get the ground state
     # calculate single spin flip spectral function
 end
