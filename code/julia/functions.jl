@@ -63,7 +63,7 @@ function constructSubspaceMatrix(subspace, systemSize, couplingJ, anisotropy, ma
             state = subspace[is]
             adjacentStates, coefficients = applyHamiltonian(state, systemSize, couplingJ, anisotropy, magnonInteractions)
             for js in 1:length(adjacentStates)
-                result[is, searchsorted(subspace, adjacentStates[js])[1]] = coefficients[js]
+                result[is, searchsorted(subspace, adjacentStates[js])[1]] += coefficients[js]
             end
         end
     end
@@ -95,6 +95,7 @@ function diagonalizeHamiltonian(blockHamiltonian)
     result
 end
 
+# investigate degeneration
 function getGroundStateSubspace(factorization)
     groundStateEnergy = Inf
     groundStateSubspaceIndex = 0
@@ -108,5 +109,5 @@ function getGroundStateSubspace(factorization)
             end
         end
     end
-    factorization[groundStateSubspaceIndex]
+    (groundStateSubspaceIndex, factorization[groundStateSubspaceIndex])
 end

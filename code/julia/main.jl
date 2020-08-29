@@ -2,10 +2,11 @@ using Gadfly
 using LinearAlgebra
 
 function main()
-    systemSize = 14
+    systemSize = 8
     couplingJ = -1.0
-    anisotropy = 0
+    anisotropy = 0.999 # for anisotropy = 1 we have additional degeneration
     magnonInteractions = 1
+
     # construct the basis (with reorganization into proper subspaces)
     basis = constructBasis(systemSize)
     # calculate the matrix of the Hamiltonian
@@ -13,11 +14,11 @@ function main()
     # diagonalize all the subspaces
     factorization = diagonalizeHamiltonian(blockHamiltonian)
     # get the ground state
-    groundStateSubspace = getGroundStateSubspace(factorization)
-    groundStateEnergy = groundStateSubspace.values[1] # note: energies are sorted on the output
-    groundStateVector = groundStateSubspace.vectors[:, 1]
-    # calculate single spin flip spectral function
-    (groundStateEnergy, groundStateVector)
+    # groundSubspaceIndex, groundStateSubspace = getGroundStateSubspace(factorization)
+    # groundStateEnergy = groundStateSubspace.values[1] # note: energies are sorted on the output
+    # groundStateVector = groundStateSubspace.vectors[:, 1]
+    # # calculate single spin flip spectral function
+    # (groundStateEnergy, groundStateVector, groundSubspaceIndex)
 end
 
 main()
