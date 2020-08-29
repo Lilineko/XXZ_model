@@ -1,7 +1,8 @@
 using Gadfly
+using LinearAlgebra
 
 function main()
-    systemSize = 8
+    systemSize = 14
     couplingJ = -1.0
     anisotropy = 0
     magnonInteractions = 1
@@ -10,17 +11,21 @@ function main()
     # calculate the matrix of the Hamiltonian
     blockHamiltonian = constructBlockHamiltonian(basis, systemSize, couplingJ, anisotropy, magnonInteractions)
     # diagonalize all the subspaces
-    
+    factorization = diagonalizeHamiltonian(blockHamiltonian)
     # get the ground state
+    groundStateSubspace = getGroundStateSubspace(factorization)
+    groundStateEnergy = groundStateSubspace.values[1] # note: energies are sorted on the output
+    groundStateVector = groundStateSubspace.vectors[:, 1]
     # calculate single spin flip spectral function
+    (groundStateEnergy, groundStateVector)
 end
 
 main()
 
-A = BitArray(undef, 8)
-A[[3,4,7]] .= true;
-A
-circshift(A, -3)
+# A = BitArray(undef, 8)
+# A[[3,4,7]] .= true;
+# A
+# circshift(A, -3)
 
 # # Notes:
 # 1. If number of lattice sites n = 4k for integer k

@@ -80,7 +80,7 @@ function constructBlockHamiltonian(basis, systemSize, couplingJ, anisotropy, mag
 end
 
 function diagonalizeBlock(matrixBlock)
-
+    eigen(matrixBlock)
 end
 
 function diagonalizeHamiltonian(blockHamiltonian)
@@ -93,4 +93,20 @@ function diagonalizeHamiltonian(blockHamiltonian)
         end
     end
     result
+end
+
+function getGroundStateSubspace(factorization)
+    groundStateEnergy = Inf
+    groundStateSubspaceIndex = 0
+    for it in 1:length(factorization)
+        subspace = factorization[it]
+        if subspace != nothing
+            subspaceGroundEnergy = subspace.values[1]
+            if groundStateEnergy > subspaceGroundEnergy
+                groundStateEnergy = subspaceGroundEnergy
+                groundStateSubspaceIndex = it
+            end
+        end
+    end
+    factorization[groundStateSubspaceIndex]
 end
