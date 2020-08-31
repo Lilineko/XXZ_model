@@ -131,6 +131,106 @@ The ground state of the Heisenberg model $H_{\parallel}$ for antiferromagnetic c
 [H_{\parallel}, H_{\perp}] \neq 0.
 \end{equation}
 
+\subsection{Exact diagonalization studies of small systems}
+In this subsection we will analise the model for small systems. Let us start with the two site chain including PBC (this just effectively multiplies the coupling constant by a factor of 2 in this case but we would like to preserve the PBC for all the cases). We have four possible states,
+\begin{equation}
+\ket{0} = \ket{\downarrow\downarrow}, \quad \ket{1} = \ket{\downarrow\uparrow}, \quad \ket{2} = \ket{\uparrow\downarrow}, \quad \ket{3} = \ket{\uparrow\uparrow},
+\end{equation}
+and therefore in the ordered basis
+\begin{equation}
+\mathcal{B} = \big(\ket{0}, \ket{1}, \ket{2}, \ket{3}\big),
+\end{equation}
+matrix of the model Hamiltonian appears as follows,
+\begin{equation}
+\mathcal{M}(H)_{\mathcal{B}}^{\mathcal{B}} = \frac{J}{2} \begin{pmatrix}
+1 & 0 & 0 & -(1-\alpha) \\
+0 & -1 & 1+\alpha & 0 \\
+0 & 1+\alpha & -1 & 0 \\
+-(1-\alpha) & 0 & 0 & 1
+\end{pmatrix}.
+\end{equation}
+We know the model does not conserve magnetization nor staggered magnetization. Nevertheless one still can notice that parity of the magnetization and the parity of staggered magnetization cannot be affected by the model Hamiltonian. This allows us to classify each state to one and only one out of four classes of states. The classes are following,
+\begin{itemize}
+	\item $S_0 = \{\psi : (M\ket{\psi}\mod 2 = 0) \land  (M_s \ket{\psi}\mod 2 = 0)\}$,
+	\item $S_1 = \{\psi : (M\ket{\psi}\mod 2 = 0) \land  (M_s \ket{\psi}\mod 2 = 1)\}$,
+	\item $S_2 = \{\psi : (M\ket{\psi}\mod 2 = 1) \land  (M_s \ket{\psi}\mod 2 = 0)\}$,
+	\item $S_3 = \{\psi : (M\ket{\psi}\mod 2 = 1) \land  (M_s \ket{\psi}\mod 2 = 1)\}$.
+\end{itemize}
+For the considered case of two sites let us find out which state belongs to which subspace. We have,
+\begin{itemize}
+	\item $(M\ket{0} = -1) \land (M_s\ket{0} = 0) \Rightarrow \ket{0} \in S_2$, 
+	\item $(M\ket{1} = 0) \land (M_s\ket{0} = -1) \Rightarrow \ket{0} \in S_1$, 
+	\item $(M\ket{2} = 0) \land (M_s\ket{0} = 1) \Rightarrow \ket{0} \in S_1$, 
+	\item $(M\ket{3} = 1) \land (M_s\ket{0} = 0) \Rightarrow \ket{0} \in S_2$.
+\end{itemize}
+One can see we could assign these states to two out of four possible subspaces. In general for system with $n = 4k - 2$ lattice sites (where $k \in \mathbb{N}$) all the states can be assigned either to subspace $S_1$ or $S_2$, whereas for $n = 4k$ states belong either to subspace $S_0$ or $S_3$. Now, reordering the ordered basis $\mathcal{B}$,
+\begin{equation}
+\mathcal{B} \rightarrow \mathcal{B}' = \big(\ket{1}, \ket{2}, \ket{0}, \ket{3}\big),
+\end{equation}
+we obtain the matrix of the Hamiltonian consisting of two blocks corresponding to the two orthogonal subspaces,
+\begin{equation}
+\mathcal{M}(H)_{\mathcal{B}'}^{\mathcal{B}'} = \frac{J}{2} \begin{pmatrix}
+-1 & 1+\alpha & 0 & 0 \\
+1+\alpha & -1 & 0 & 0 \\
+0 & 0 & 1 & -(1-\alpha) \\
+0 & 0 & -(1-\alpha) & 1
+\end{pmatrix}.
+\end{equation}
+For $\alpha \in [0, 1)$ the above can be easily diagonalized yielding following eigenstates and energies,
+\begin{eqnarray}
+\ket{\psi_1} &=& \frac{1}{\sqrt{2}}\left(\ket{2} + \ket{1}\right), \quad E_1 = \frac{J}{2}a, \\
+\ket{\psi_2} &=& \frac{1}{\sqrt{2}}\left(\ket{2} - \ket{1}\right), \quad E_2 = -\frac{J}{2}(2+a), \\
+\ket{\psi_3} &=& \frac{1}{\sqrt{2}}\left(\ket{3} + \ket{0}\right), \quad E_3 = \frac{J}{2}a, \\
+\ket{\psi_4} &=& \frac{1}{\sqrt{2}}\left(\ket{3} - \ket{0}\right), \quad E_4 = \frac{J}{2}(2-a).
+\end{eqnarray}
+For ferromagnetic $J < 0$ the ground state energy is $E_4$. It is also true that for a finite system the ground state is always a singlet (see results in Sec. \ref{}). This changes at $\alpha = 1$, i.e. in the case of the Heisenberg model, where for ferromagnetic coupling constant one expects a triplet in the two site example. Also note that for $\alpha = 1$ the coupling between $\ket{0}$ and $\ket{3}$ vanish. Thus case of $\alpha = 1$ is qualitatively different and should be investigated separately from the $\alpha \in [0, 1)$. 
+
+Let now have a look at the four sites case. There are 16 possible spin states separable into two subspaces of equal sizes. We can enumerate states using binary representation for each spin configuration as in the two site example, 
+\begin{equation}
+\ket{\downarrow\downarrow\downarrow\downarrow} = \ket{0}, \quad \ket{\downarrow\downarrow\downarrow\uparrow} = \ket{1}, \quad ..., \quad \ket{\uparrow\uparrow\uparrow\uparrow} = \ket{15}.
+\end{equation}
+Thus for the subspace with even magnetization and even staggered magnetization we may choose the following ordered basis,
+\begin{equation}
+\mathcal{C}_0 = \Big( \ket{0}, \ket{3}, \ket{5}, \ket{6}, \ket{9}, \ket{10}, \ket{12}, \ket{15} \Big),
+\end{equation}
+whereas for the subspace with odd magnetization and odd staggered magnetization the ordered basis appears as follows,
+\begin{equation}
+\mathcal{C}_1 = \Big( \ket{1}, \ket{2}, \ket{4}, \ket{7}, \ket{8}, \ket{11}, \ket{13}, \ket{14} \Big).
+\end{equation}
+Thus matrix of the Hamiltonian again consists of two blocks,
+\begin{equation}
+\mathcal{M}(H)_{\mathcal{C}_0}^{\mathcal{C}_0} = \frac{J}{2} \begin{pmatrix}
+2 & \tau_{\perp} & 0 & \tau_{\perp} & \tau_{\perp} & 0 & \tau_{\perp} & 0 \\
+\tau_{\perp} & 0 & \tau_{\parallel} & 0 & 0 & \tau_{\parallel}  & 0 & \tau_{\perp}\\
+0 & \tau_{\parallel}  & -2 & \tau_{\parallel} & \tau_{\parallel}  & 0 & \tau_{\parallel}  & 0 \\
+\tau_{\perp}& 0 & \tau_{\parallel} & 0 & 0 & \tau_{\parallel}  & 0 & \tau_{\perp} \\
+\tau_{\perp}& 0 & \tau_{\parallel} & 0 & 0 & \tau_{\parallel}  & 0 & \tau_{\perp} \\
+0 & \tau_{\parallel}  & 0 & \tau_{\parallel} & \tau_{\parallel}  & -2 & \tau_{\parallel}  & 0 \\
+\tau_{\perp} & 0 & \tau_{\parallel} & 0 & 0 & \tau_{\parallel}  & 0 & \tau_{\perp}\\
+0 & \tau_{\perp} & 0 & \tau_{\perp} & \tau_{\perp} & 0 & \tau_{\perp} & 2
+\end{pmatrix},
+\end{equation}
+\begin{equation}
+\mathcal{M}(H)_{\mathcal{C}_1}^{\mathcal{C}_1} = \frac{J}{2} \begin{pmatrix}
+0 & \tau_{\parallel} & 0 & \tau_{\perp} & \tau_{\parallel} & 0 & \tau_{\perp} & 0 \\
+\tau_{\parallel} & 0 & \tau_{\parallel} & 0 & 0 & \tau_{\perp}  & 0 & \tau_{\perp}\\
+0 & \tau_{\parallel}  & 0 & \tau_{\perp} & \tau_{\parallel}  & 0 & \tau_{\perp}  & 0 \\
+\tau_{\perp}& 0 & \tau_{\perp} & 0 & 0 & \tau_{\parallel}  & 0 & \tau_{\parallel} \\
+\tau_{\parallel}& 0 & \tau_{\parallel} & 0 & 0 & \tau_{\perp}  & 0 & \tau_{\perp} \\
+0 & \tau_{\perp}  & 0 & \tau_{\parallel} & \tau_{\perp}  & 0 & \tau_{\parallel}  & 0 \\
+\tau_{\perp} & 0 & \tau_{\perp} & 0 & 0 & \tau_{\parallel}  & 0 & \tau_{\parallel}\\
+0 & \tau_{\perp} & 0 & \tau_{\parallel} & \tau_{\perp} & 0 & \tau_{\parallel} & 0
+\end{pmatrix},
+\end{equation}
+where
+\begin{equation}
+\tau_{\parallel} = \frac{1+\alpha}{2}, \quad \text{and} \quad \tau_{\perp} = -\frac{1-\alpha}{2}
+\end{equation}
+Diagonalizing each subspace we obtain set of eigenvectors and energies where the ground state energy is $E_\textsc{gs} = E^\textsc{gs}_{\mathcal{C}_0} = \frac{J}{2}\left(-\alpha + \sqrt{8 + \alpha^2}\right)$. It is also worth of noticing that the second lowest energy in the subspace containing the ground state is equal to the lowest energy in the other one subspace $E^{\textsc{gs}}_{\mathcal{C}_1} = J$. Here $E^{\textsc{gs}}_{\mathcal{C}_1}$ does not depend on $\alpha$ but in general, i.e. for larger systems, it does.
+
 \section{TODO}
-1. zrozumiec co z transformata fouriera
+1. 4 sites example \\
+2. spectral functions \\
+3. conclusions \\
+4. summary
 \end{document}
