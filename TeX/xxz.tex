@@ -111,7 +111,7 @@ Now let us comment on why we denoted these Hamiltonians as \textit{parallel} and
 
 The first come from the magnetization conservation present in the Heisenberg model. Indeed, one can see that $S_i^+ S_j^- + S_i^- S_j^+$ operators allow the magnetic excitation (flipped spin) to spread only across states within the subspace of the Hilbert space corresponding to the given magnetization because number of spins up or/and down cannot be changed. On the other hand $S_i^+ S_j^+ + S_i^- S_j^-$ operators come with the opposing mechanism leading to changes in the magnetization of the system. 
 
-The second reason for the choice of the notation comes from the type of the \textit{classical} ground state of the system realised by these models. For ferromagnetic coupling constant $(J < 0)$ the ground state of $H_{\parallel}$ is the Ising ferromagnet (twofold degenerated due to $Z \to -Z$ symmetry of the system), i.e. neighbouring spins are aligned parallel in the \textit{classical} ground state. Accordingly, for antiferromagnetic coupling constant $(J > 0)$ the ground state of $H_{\perp}$ it the Ising antiferromagnet (also twofold degenerated due $Z \to -Z$ symmetry), i.e. neighbouring spins are aligned anti-parallel in the \textit{classical} ground state.
+The second reason for the choice of the notation comes from the type of the \textit{classical} ground state of the system realised by these models. For ferromagnetic coupling constant $(J < 0)$ the ground state of $H_{\parallel}$ is $2S+1$ degenerated due to rotational symmetry of the system. But in the thermodynamic limit in arbitrary small magnetic field symmetry is broken and the system appears to be simply Ising ferromagnet, i.e. neighbouring spins are aligned parallel in the \textit{classical} ground state. Accordingly, for antiferromagnetic coupling constant $(J > 0)$ the ground state of $H_{\perp}$ it the Ising antiferromagnet (formally also $2S+1$ degenerated), i.e. neighbouring spins are aligned anti-parallel in the \textit{classical} ground state.
 
 \subsection{Magnetization and Staggered Magnetization}
 In order to understand how the classical antiferromagnet arises as the ground state of $H_{\perp}$ for $J > 0$ it is enough to look at the Eq.~(\ref{eq:rot_relation}). Rotating the operators in the Heisenberg model and spins in the sublattice $\mathcal{B}$ one does not change the physics of the system. Therefore given the eigenstates $\ket{\psi_n}$ of $H_{\parallel}$ Hamiltonian with corresponding energies $E_n$ one easily obtains eigenstates of the $H_{\perp}$ by reversing spins at sublattice $\mathcal{B}$. Then corresponding energies are $-E_n$. Incorporating the sign change into a coupling constant we see that Ising antiferromagnet is the ground state of $H_{\perp}$ for antiferromagnetic $J > 0$. 
@@ -140,7 +140,7 @@ and therefore in the ordered basis
 \begin{equation}
 \mathcal{B} = \big(\ket{0}, \ket{1}, \ket{2}, \ket{3}\big),
 \end{equation}
-matrix of the model Hamiltonian appears as follows,
+where we use the $n$-tuple notation to explicitly denote the sequence of basis vectors. Thus matrix of the model Hamiltonian in basis $\mathcal{B}$ appears as follows,
 \begin{equation}
 \mathcal{M}(H)_{\mathcal{B}}^{\mathcal{B}} = \frac{J}{2} \begin{pmatrix}
 1 & 0 & 0 & -(1-\alpha) \\
@@ -185,7 +185,7 @@ For $\alpha \in [0, 1)$ the above can be easily diagonalized yielding following 
 \end{eqnarray}
 For ferromagnetic $J < 0$ the ground state energy is $E_4$. It is also true that for a finite system the ground state is always a singlet (see results in Sec. \ref{}). This changes at $\alpha = 1$, i.e. in the case of the Heisenberg model, where for ferromagnetic coupling constant one expects a triplet in the two site example. Also note that for $\alpha = 1$ the coupling between $\ket{0}$ and $\ket{3}$ vanish. Thus case of $\alpha = 1$ is qualitatively different and should be investigated separately from the $\alpha \in [0, 1)$. 
 
-Let now have a look at the four sites case. There are 16 possible spin states separable into two subspaces of equal sizes. We can enumerate states using binary representation for each spin configuration as in the two site example, 
+Let now have a look at the four sites case. There are 16 possible spin states separable into two subspaces of equal sizes. We can enumerate these states using binary representation for each spin configuration as in the two site example, 
 \begin{equation}
 \ket{\downarrow\downarrow\downarrow\downarrow} = \ket{0}, \quad \ket{\downarrow\downarrow\downarrow\uparrow} = \ket{1}, \quad ..., \quad \ket{\uparrow\uparrow\uparrow\uparrow} = \ket{15}.
 \end{equation}
@@ -193,11 +193,11 @@ Thus for the subspace with even magnetization and even staggered magnetization w
 \begin{equation}
 \mathcal{C}_0 = \Big( \ket{0}, \ket{3}, \ket{5}, \ket{6}, \ket{9}, \ket{10}, \ket{12}, \ket{15} \Big),
 \end{equation}
-whereas for the subspace with odd magnetization and odd staggered magnetization the ordered basis appears as follows,
+whereas for the subspace with odd magnetization and odd staggered magnetization the ordered basis may appear as follows,
 \begin{equation}
 \mathcal{C}_1 = \Big( \ket{1}, \ket{2}, \ket{4}, \ket{7}, \ket{8}, \ket{11}, \ket{13}, \ket{14} \Big).
 \end{equation}
-Thus matrix of the Hamiltonian again consists of two blocks,
+Thus matrix of the Hamiltonian consists of two blocks,
 \begin{equation}
 \mathcal{M}(H)_{\mathcal{C}_0}^{\mathcal{C}_0} = \frac{J}{2} \begin{pmatrix}
 2 & \tau_{\perp} & 0 & \tau_{\perp} & \tau_{\perp} & 0 & \tau_{\perp} & 0 \\
@@ -226,7 +226,9 @@ where
 \begin{equation}
 \tau_{\parallel} = \frac{1+\alpha}{2}, \quad \text{and} \quad \tau_{\perp} = -\frac{1-\alpha}{2}
 \end{equation}
-Diagonalizing each subspace we obtain set of eigenvectors and energies where the ground state energy is $E_\textsc{gs} = E^\textsc{gs}_{\mathcal{C}_0} = \frac{J}{2}\left(-\alpha + \sqrt{8 + \alpha^2}\right)$. It is also worth of noticing that the second lowest energy in the subspace containing the ground state is equal to the lowest energy in the other one subspace $E^{\textsc{gs}}_{\mathcal{C}_1} = J$. Here $E^{\textsc{gs}}_{\mathcal{C}_1}$ does not depend on $\alpha$ but in general, i.e. for larger systems, it does.
+Diagonalizing each subspace we obtain set of eigenvectors and energies where the ground state energy is $E_\textsc{gs} = E^\textsc{gs}_{\mathcal{C}_0} = \frac{J}{2}\left(-\alpha + \sqrt{8 + \alpha^2}\right)$. It is also worth of noticing that the second lowest energy in the subspace containing the ground state is equal to the lowest energy in the other one subspace $E^{\textsc{gs}}_{\mathcal{C}_1} = J$. Here $E^{\textsc{gs}}_{\mathcal{C}_1}$ does not depend on $\alpha$ but in general, e.g. for larger systems, it does. Similarly we had $E_1 = E_3 = \frac{J}{2}\alpha$ in the two site example. The same holds for any lattice size $n = 2k$ -- second lowest energy is at least doubly degenerated and corresponding eigenstates belong to different subspaces with respect to parity of magnetization and staggered magnetization. 
+
+Cases with odd number of lattice sites are different with the ground state being doubly degenerated for $\alpha \in [0, 1)$ and we are not going to investigate them in details here. Nevertheless we can draw a conclusion for cases with even number of lattice sites. Namely, when number of lattice sites grows the two lowest energies should approach one another because in the thermodynamic limit one shall not be able to distinguish between even and odd number of lattice sites.
 
 \section{TODO}
 1. 4 sites example \\

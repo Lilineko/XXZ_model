@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.6980) (preloaded format=pdflatex 2020.8.29)  31 AUG 2020 14:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.6980) (preloaded format=pdflatex 2020.8.29)  31 AUG 2020 18:42
 entering extended mode
 **./xxz.tex
 (xxz.tex
@@ -306,7 +306,7 @@ dftex.map}] [2] [3]
 
 LaTeX Warning: Reference `' on page 4 undefined on input line 186.
 
-[4] [5] (xxz.aux)
+[4] [5] [6] (xxz.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -314,11 +314,11 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  4300 strings out of 483124
  62949 string characters out of 2954754
- 319848 words of memory out of 3000000
+ 321848 words of memory out of 3000000
  19619 multiletter control sequences out of 15000+200000
  542838 words of font info for 57 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 44i,8n,40p,1399b,171s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,8n,40p,1399b,165s stack positions out of 5000i,500n,10000p,200000b,50000s
  </Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljf
 our/jknappen/ec/dpi600/tcrm1200.pk></Users/pwrzosek/Library/Application Support
 /MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/pwrzos
@@ -339,9 +339,9 @@ cm/cmsy6.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install
 Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti12.pfb></Users
 /pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/
 amsfonts/symbols/msbm10.pfb>
-Output written on xxz.pdf (5 pages, 153850 bytes).
+Output written on xxz.pdf (6 pages, 155335 bytes).
 PDF statistics:
- 75 PDF objects out of 1000 (max. 8388607)
+ 78 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

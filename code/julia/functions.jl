@@ -27,6 +27,25 @@ function constructBasis(systemSize)
     conservedSubspaces
 end
 
+function getRepresentativeState(state)
+
+end
+
+function constructMomentumBasis(systemSize)
+    basis = constructBasis(systemSize)
+    result = [[[] for _ in basis] for _ in 1:systemSize]
+    for is in 1:length(basis)
+        subspace = basis[is]
+        for state in subspace
+            representative = getRepresentativeState(state)
+            if length(searchsorted(result[1][is])) == 0
+                p = getPeriod(representative)
+                # and the logic here
+            end
+        end
+    end
+end
+
 function applyHamiltonian(state, systemSize, couplingJ, anisotropy, magnonInteractions)
     magnonRepresentation = digits(state, base = 2, pad = systemSize)
     resultingStates = [state]
