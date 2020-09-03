@@ -27,8 +27,45 @@ function constructBasis(systemSize)
     conservedSubspaces
 end
 
-function getRepresentativeState(state)
+function getRepresentativeState(state, systemSize)
+    magnonRepresentation = digits(state, base = 2, pad = systemSize)
+    result = state
+    magnonRepresentation = circshift(magnonRepresentation, 1)
+    newState = sum([magnonRepresentation[k] * 2^(k-1) for k in 1:systemSize])
+    while newState != state
+        result = min(result, newState)
+        magnonRepresentation = circshift(magnonRepresentation, 1)
+        newState = sum([magnonRepresentation[k] * 2^(k-1) for k in 1:systemSize])
+    end
+    result
+end
 
+function getPeriod(state, systemSize)
+    magnonRepresentation = digits(state, base = 2, pad = systemSize)
+    magnonRepresentation = circshift(magnonRepresentation, 1)
+    newState = sum([magnonRepresentation[k] * 2^(k-1) for k in 1:systemSize])
+    result = 1
+    while newState != state
+        magnonRepresentation = circshift(magnonRepresentation, 1)
+        newState = sum([magnonRepresentation[k] * 2^(k-1) for k in 1:systemSize])
+        result += 1
+    end
+    result
+end
+
+function findContainingMomentumSubspaces(period, systemSize)
+    if mod(systemSize, period) != 0
+        println("Wrong Periodicity")
+        return nothing
+    end
+    step = div(systemSize, period)
+    result = [1]
+    index = 1 + step
+    while index <= systemSize
+        push!(result, index)
+        index += step
+    end
+    result
 end
 
 function constructMomentumBasis(systemSize)
@@ -37,13 +74,17 @@ function constructMomentumBasis(systemSize)
     for is in 1:length(basis)
         subspace = basis[is]
         for state in subspace
-            representative = getRepresentativeState(state)
-            if length(searchsorted(result[1][is])) == 0
-                p = getPeriod(representative)
-                # and the logic here
+            representative = getRepresentativeState(state, systemSize)
+            if length(searchsorted(result[1][is], representative)) == 0
+                p = getPeriod(representative, systemSize)
+                containingMomentumSubspaces = findContainingMomentumSubspaces(p, systemSize)
+                for it in containingMomentumSubspaces
+                    push!(result[it][is], representative)
+                end
             end
         end
     end
+    result
 end
 
 function applyHamiltonian(state, systemSize, couplingJ, anisotropy, magnonInteractions)

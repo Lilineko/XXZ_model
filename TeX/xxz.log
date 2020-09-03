@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.6980) (preloaded format=pdflatex 2020.8.29)  31 AUG 2020 18:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.6980) (preloaded format=pdflatex 2020.8.29)  2 SEP 2020 19:29
 entering extended mode
 **./xxz.tex
 (xxz.tex
@@ -306,7 +306,12 @@ dftex.map}] [2] [3]
 
 LaTeX Warning: Reference `' on page 4 undefined on input line 186.
 
-[4] [5] [6] (xxz.aux)
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 237--239
+
+ []
+
+[5] [6] (xxz.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -339,7 +344,7 @@ cm/cmsy6.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install
 Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti12.pfb></Users
 /pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/
 amsfonts/symbols/msbm10.pfb>
-Output written on xxz.pdf (6 pages, 155335 bytes).
+Output written on xxz.pdf (6 pages, 155777 bytes).
 PDF statistics:
  78 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
