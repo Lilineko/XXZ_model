@@ -123,11 +123,76 @@ function constructSubspaceMatrix(subspace, systemSize, couplingJ, anisotropy, ma
     result
 end
 
+function getTranslationalFamily(state, systemSize)
+    period = getPeriod(state, systemSize)
+    magnonRepresentation = digits(state, base = 2, pad = systemSize)
+    result = Vector{Int64}(undef, period)
+    for it in 1:period
+        newMember = circshift(magnonRepresentation, it-1)
+        result[it] = sum([newMember[k] * 2^(k-1) for k in 1:systemSize])
+    end
+    result
+end
+
+function getTranslationsToRepresentative(state, systemSize)
+    representative = getRepresentativeState(state, systemSize)
+    result = 0
+    stateRepresentation = digits(state, base = 2, pad = systemSize)
+    representativeRepresentation = digits(representative, base = 2, pad = systemSize)
+    while stateRepresentation != representativeRepresentation
+        representativeRepresentation = circshift(representativeRepresentation, 1)
+        result += 1
+    end
+    result
+end
+
+# TODO: write proper algoryth mor phase calculation or better momentum hamiltonian creation
+function getPhase(momentum, state, adjacentState, systemSize)
+    stateShift = getTranslationsToRepresentative(state, systemSize)
+    adjacentStateShift = getTranslationsToRepresentative(adjacentState, systemSize)
+    exp(im * (momentum - 1) * (stateShift - adjacentStateShift) / systemSize)
+end
+
+function constructMomentumSubspaceMatrix(momentum, subspace, systemSize, couplingJ, anisotropy, magnonInteractions)
+    dimensions = length(subspace)
+    result = zeros(ComplexF64, dimensions, dimensions)
+    if dimensions > 0
+        for is in 1:dimensions
+            representativeState = subspace[is]
+            statesFamily = getTranslationalFamily(representativeState, systemSize)
+            for it in 1:length(statesFamily)
+                state = statesFamily[it]
+                adjacentStates, coefficients = applyHamiltonian(state, systemSize, couplingJ, anisotropy, magnonInteractions)
+                for js in 1:length(adjacentStates)
+                    adjacentState = adjacentStates[js]
+                    indices = searchsorted(subspace, adjacentState)
+                    if length(indices) != 0
+                        phase = getPhase(momentum, state, adjacentState, systemSize)
+                        result[is, indices[1]] += phase * coefficients[js]
+                    end
+                end
+            end
+        end
+    end
+    result
+end
+
 function constructBlockHamiltonian(basis, systemSize, couplingJ, anisotropy, magnonInteractions)
     result = []
     for subspace in basis
         matrixBlock = constructSubspaceMatrix(subspace, systemSize, couplingJ, anisotropy, magnonInteractions)
         push!(result, matrixBlock)
+    end
+    result
+end
+
+function constructMomentumBlockHamiltonian(momentumBasis, systemSize, couplingJ, anisotropy, magnonInteractions)
+    result = [[] for _ in 1:systemSize]
+    for momentum in 1:systemSize
+        for subspace in momentumBasis[momentum]
+            matrixBlock = constructMomentumSubspaceMatrix(momentum, subspace, systemSize, couplingJ, anisotropy, magnonInteractions)
+            push!(result[momentum], matrixBlock)
+        end
     end
     result
 end
