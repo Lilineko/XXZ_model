@@ -2,7 +2,7 @@ using Gadfly
 using LinearAlgebra
 
 function main()
-    systemSize = 5
+    systemSize = 6
     couplingJ = -1.0
     anisotropy = 0 # for anisotropy = 1 we have additional degeneration, thus allowed range is [0, 1)
     magnonInteractions = 1

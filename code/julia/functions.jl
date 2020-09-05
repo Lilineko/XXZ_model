@@ -2,8 +2,12 @@ function getMagnetization(state, systemSize)
     systemSize/2 - sum(digits(state, base = 2))
 end
 
+function getMagnonRepresentation(state, systemSize)
+    digits(state, base = 2, pad = systemSize)
+end
+
 function getStaggeredMagnetization(state, systemSize)
-    spinRepresentation = digits(state, base = 2, pad = systemSize) .- 0.5
+    spinRepresentation = getMagnonRepresentation(state, systemSize) .- 0.5
     filter = [(-1)^(it - 1) for it in 1:systemSize]
     sum(filter .* spinRepresentation)
 end
@@ -27,68 +31,72 @@ function constructBasis(systemSize)
     conservedSubspaces
 end
 
+function getStateIndex(representation, systemSize)
+    sum([representation[k] * 2^(k-1) for k in 1:systemSize])
+end
+
 function getRepresentativeState(state, systemSize)
-    magnonRepresentation = digits(state, base = 2, pad = systemSize)
+    magnonRepresentation = getMagnonRepresentation(state, systemSize)
     result = state
     magnonRepresentation = circshift(magnonRepresentation, 1)
     newState = sum([magnonRepresentation[k] * 2^(k-1) for k in 1:systemSize])
     while newState != state
         result = min(result, newState)
         magnonRepresentation = circshift(magnonRepresentation, 1)
-        newState = sum([magnonRepresentation[k] * 2^(k-1) for k in 1:systemSize])
+        newState = getStateIndex(magnonRepresentation, systemSize)
     end
     result
 end
 
-function getPeriod(state, systemSize)
-    magnonRepresentation = digits(state, base = 2, pad = systemSize)
-    magnonRepresentation = circshift(magnonRepresentation, 1)
-    newState = sum([magnonRepresentation[k] * 2^(k-1) for k in 1:systemSize])
-    result = 1
-    while newState != state
-        magnonRepresentation = circshift(magnonRepresentation, 1)
-        newState = sum([magnonRepresentation[k] * 2^(k-1) for k in 1:systemSize])
-        result += 1
-    end
-    result
-end
+# function getPeriod(state, systemSize)
+#     magnonRepresentation = getMagnonRepresentation(state, systemSize)
+#     magnonRepresentation = circshift(magnonRepresentation, 1)
+#     newState = sum([magnonRepresentation[k] * 2^(k-1) for k in 1:systemSize])
+#     result = 1
+#     while newState != state
+#         magnonRepresentation = circshift(magnonRepresentation, 1)
+#         newState = getStateIndex(magnonRepresentation, systemSize)
+#         result += 1
+#     end
+#     result
+# end
 
-function findContainingMomentumSubspaces(period, systemSize)
-    if mod(systemSize, period) != 0
-        println("Wrong Periodicity")
-        return nothing
-    end
-    step = div(systemSize, period)
-    result = [1]
-    index = 1 + step
-    while index <= systemSize
-        push!(result, index)
-        index += step
-    end
-    result
-end
+# function findContainingMomentumSubspaces(period, systemSize)
+#     if mod(systemSize, period) != 0
+#         println("Wrong Periodicity")
+#         return nothing
+#     end
+#     step = div(systemSize, period)
+#     result = [1]
+#     index = 1 + step
+#     while index <= systemSize
+#         push!(result, index)
+#         index += step
+#     end
+#     result
+# end
 
-function constructMomentumBasis(systemSize)
-    basis = constructBasis(systemSize)
-    result = [[[] for _ in basis] for _ in 1:systemSize]
-    for is in 1:length(basis)
-        subspace = basis[is]
-        for state in subspace
-            representative = getRepresentativeState(state, systemSize)
-            if length(searchsorted(result[1][is], representative)) == 0
-                p = getPeriod(representative, systemSize)
-                containingMomentumSubspaces = findContainingMomentumSubspaces(p, systemSize)
-                for it in containingMomentumSubspaces
-                    push!(result[it][is], representative)
-                end
-            end
-        end
-    end
-    result
-end
+# function constructMomentumBasis(systemSize)
+#     basis = constructBasis(systemSize)
+#     result = [[[] for _ in basis] for _ in 1:systemSize]
+#     for is in 1:length(basis)
+#         subspace = basis[is]
+#         for state in subspace
+#             representative = getRepresentativeState(state, systemSize)
+#             if length(searchsorted(result[1][is], representative)) == 0
+#                 p = getPeriod(representative, systemSize)
+#                 containingMomentumSubspaces = findContainingMomentumSubspaces(p, systemSize)
+#                 for it in containingMomentumSubspaces
+#                     push!(result[it][is], representative)
+#                 end
+#             end
+#         end
+#     end
+#     result
+# end
 
 function applyHamiltonian(state, systemSize, couplingJ, anisotropy, magnonInteractions)
-    magnonRepresentation = digits(state, base = 2, pad = systemSize)
+    magnonRepresentation = getMagnonRepresentation(state, systemSize)
     resultingStates = [state]
     resultingTransitions = [0.0]
     V, T = 0, 0
@@ -123,59 +131,60 @@ function constructSubspaceMatrix(subspace, systemSize, couplingJ, anisotropy, ma
     result
 end
 
-function getTranslationalFamily(state, systemSize)
-    period = getPeriod(state, systemSize)
-    magnonRepresentation = digits(state, base = 2, pad = systemSize)
-    result = Vector{Int64}(undef, period)
-    for it in 1:period
-        newMember = circshift(magnonRepresentation, it-1)
-        result[it] = sum([newMember[k] * 2^(k-1) for k in 1:systemSize])
-    end
-    result
-end
+# function getTranslationalFamily(state, systemSize)
+#     magnonRepresentation = getMagnonRepresentation(state, systemSize)
+#     result = [state]
+#     newRepresentation = circshift(magnonRepresentation, 1)
+#     while newRepresentation != magnonRepresentation
+#         push!(result, getStateIndex(newRepresentation, systemSize))
+#         newRepresentation = circshift(newRepresentation, 1)
+#     end
+#     result
+# end
 
-function getTranslationsToRepresentative(state, systemSize)
-    representative = getRepresentativeState(state, systemSize)
-    result = 0
-    stateRepresentation = digits(state, base = 2, pad = systemSize)
-    representativeRepresentation = digits(representative, base = 2, pad = systemSize)
-    while stateRepresentation != representativeRepresentation
-        representativeRepresentation = circshift(representativeRepresentation, 1)
-        result += 1
-    end
-    result
-end
+# function getTranslationsToRepresentative(state, representative, systemSize)
+#     result = 0
+#     stateRepresentation = getMagnonRepresentation(state, systemSize)
+#     representativeRepresentation = digits(representative, base = 2, pad = systemSize)
+#     while stateRepresentation != representativeRepresentation
+#         representativeRepresentation = circshift(representativeRepresentation, 1)
+#         result += 1
+#     end
+#     result
+# end
 
-# TODO: write proper algoryth mor phase calculation or better momentum hamiltonian creation
-function getPhase(momentum, state, adjacentState, systemSize)
-    stateShift = getTranslationsToRepresentative(state, systemSize)
-    adjacentStateShift = getTranslationsToRepresentative(adjacentState, systemSize)
-    exp(im * (momentum - 1) * (stateShift - adjacentStateShift) / systemSize)
-end
+# function getPhase(momentum, adjacentState, adjacentRepresentative, systemSize)
+#     adjacentShift = getTranslationsToRepresentative(adjacentState, systemSize)
+#     exp(2π * (momentum - 1) * im * adjacentShift / systemSize)
+# end
 
-function constructMomentumSubspaceMatrix(momentum, subspace, systemSize, couplingJ, anisotropy, magnonInteractions)
-    dimensions = length(subspace)
-    result = zeros(ComplexF64, dimensions, dimensions)
-    if dimensions > 0
-        for is in 1:dimensions
-            representativeState = subspace[is]
-            statesFamily = getTranslationalFamily(representativeState, systemSize)
-            for it in 1:length(statesFamily)
-                state = statesFamily[it]
-                adjacentStates, coefficients = applyHamiltonian(state, systemSize, couplingJ, anisotropy, magnonInteractions)
-                for js in 1:length(adjacentStates)
-                    adjacentState = adjacentStates[js]
-                    indices = searchsorted(subspace, adjacentState)
-                    if length(indices) != 0
-                        phase = getPhase(momentum, state, adjacentState, systemSize)
-                        result[is, indices[1]] += phase * coefficients[js]
-                    end
-                end
-            end
-        end
-    end
-    result
-end
+# function constructMomentumSubspaceMatrix(momentum, subspace, systemSize, couplingJ, anisotropy, magnonInteractions)
+#     dimensions = length(subspace)
+#     result = zeros(ComplexF64, dimensions, dimensions)
+#     if dimensions > 0
+#         for is in 1:dimensions
+#             representativeState = subspace[is]
+#             statePeriod = getPeriod(representativeState, systemSize)
+#             magnonRepresentation = getMagnonRepresentation(representativeState, systemSize)
+#             for r in 0:(systemSize-1)
+#                 state = getStateIndex(magnonRepresentation, systemSize)
+#                 adjacentStates, coefficients = applyHamiltonian(state, systemSize, couplingJ, anisotropy, magnonInteractions)
+#                 for js in 1:length(adjacentStates)
+#                     adjacentState = adjacentStates[js]
+#                     adjacentRepresentative = getRepresentativeState(adjacentState, systemSize)
+#                     indices = searchsorted(subspace, adjacentRepresentative)
+#                     if length(indices) != 0
+#                         adjacentPeriod = getPeriod(adjacentState, systemSize)
+#                         phase = getPhase(momentum, adjacentState, adjacentRepresentative, systemSize)
+#                         result[is, indices[1]] += sqrt(adjacentPeriod / statePeriod) * phase * coefficients[js]
+#                     end
+#                 end
+#                 magnonRepresentation = circshift(magnonRepresentation, 1)
+#             end
+#         end
+#     end
+#     result
+# end
 
 function constructBlockHamiltonian(basis, systemSize, couplingJ, anisotropy, magnonInteractions)
     result = []
@@ -186,16 +195,16 @@ function constructBlockHamiltonian(basis, systemSize, couplingJ, anisotropy, mag
     result
 end
 
-function constructMomentumBlockHamiltonian(momentumBasis, systemSize, couplingJ, anisotropy, magnonInteractions)
-    result = [[] for _ in 1:systemSize]
-    for momentum in 1:systemSize
-        for subspace in momentumBasis[momentum]
-            matrixBlock = constructMomentumSubspaceMatrix(momentum, subspace, systemSize, couplingJ, anisotropy, magnonInteractions)
-            push!(result[momentum], matrixBlock)
-        end
-    end
-    result
-end
+# function constructMomentumBlockHamiltonian(momentumBasis, systemSize, couplingJ, anisotropy, magnonInteractions)
+#     result = [[] for _ in 1:systemSize]
+#     for momentum in 1:systemSize
+#         for subspace in momentumBasis[momentum]
+#             matrixBlock = constructMomentumSubspaceMatrix(momentum, subspace, systemSize, couplingJ, anisotropy, magnonInteractions)
+#             push!(result[momentum], matrixBlock)
+#         end
+#     end
+#     result
+# end
 
 function diagonalizeBlock(matrixBlock)
     eigen(matrixBlock)
