@@ -227,7 +227,7 @@ function getGroundStateSubspace(factorization) # in case of the Heisenberg model
     groundStateSubspaceIndex = 0
     for it in 1:length(factorization)
         subspace = factorization[it]
-        if subspace != nothing
+        if subspace !== nothing
             subspaceGroundEnergy = subspace.values[1]
             if groundStateEnergy > subspaceGroundEnergy
                 groundStateEnergy = subspaceGroundEnergy
