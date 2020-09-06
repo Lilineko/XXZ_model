@@ -2,7 +2,7 @@ using Gadfly
 using LinearAlgebra
 
 function main()
-    systemSize = 4
+    systemSize = 6
     couplingJ = -1.0
     anisotropy = 0 # for anisotropy = 1 we have additional degeneration, thus allowed range is [0, 1)
     magnonInteractions = 1
@@ -17,8 +17,10 @@ function main()
     groundSubspaceIndex, groundStateSubspace = getGroundStateSubspace(factorization)
     groundStateEnergy = groundStateSubspace.values[1] # note: energies are sorted on the output
     groundStateVector = groundStateSubspace.vectors[:, 1]
-    # # calculate single spin flip spectral function
-    # (groundStateEnergy, groundStateVector, groundSubspaceIndex)
+    # apply spin flit to the ground state
+    flippedState = applySpinFlipUp(4, groundStateVector, groundSubspaceIndex, basis, systemSize)
+    # calculate single spin flip spectral function
+
 end
 
 main()

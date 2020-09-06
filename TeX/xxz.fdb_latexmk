@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex xxz"] 1599417776 "xxz.aux" "xxz.bbl" "xxz" 1599418517
+["bibtex xxz"] 1599417776 "xxz.aux" "xxz.bbl" "xxz" 1599426574
   "apsrev4-1.bst" 0 -1 0 ""
-  "xxz.aux" 1599418517 2497 6c4df7feabd52abb1320b0f095bf4649 "pdflatex"
+  "xxz.aux" 1599426573 2497 6c4df7feabd52abb1320b0f095bf4649 "pdflatex"
   "xxz.bib" 1599406299 233 43e99e712aefe8e47c0aa0ddc1cf7494 ""
   (generated)
-  "xxz.bbl"
   "xxz.blg"
-["pdflatex"] 1599418516 "/Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.tex" "/Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.pdf" "xxz" 1599418517
-  "/Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.aux" 1599418517 2497 6c4df7feabd52abb1320b0f095bf4649 ""
-  "/Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.tex" 1599418515 20297 90f18da97e9bf5d7f0d2ebf17291ecbc ""
+  "xxz.bbl"
+["pdflatex"] 1599426572 "/Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.tex" "/Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.pdf" "xxz" 1599426574
+  "/Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.aux" 1599426573 2497 6c4df7feabd52abb1320b0f095bf4649 ""
+  "/Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.tex" 1599426571 20297 9fe2cda222485e204ef56416d359b921 ""
   "/Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1200.pk" 1598805979 14064 c1eb719abf659ef0ff47e4f9b3478831 ""
   "/Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1598726171 7006934 e3c82f64a0bc61df973ed2c7cb46e768 ""
   "/Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/data/pdftex/config/pdftex.map" 1599416612 83936 876ea37268bd3114c048beedc2d41123 ""
@@ -103,14 +103,14 @@
   "/Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/tex/latex/tools/enumerate.sty" 1598726143 3469 19b6cb25f21abe53fb90b9fe27615441 ""
   "/Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/tex/latex/url/url.sty" 1598726144 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/tex/latex/xcolor/xcolor.sty" 1553354285 57049 74963e80d77be39a0b7442967b27c75b ""
-  "xxz.aux" 1599418517 2497 6c4df7feabd52abb1320b0f095bf4649 "pdflatex"
+  "xxz.aux" 1599426573 2497 6c4df7feabd52abb1320b0f095bf4649 "pdflatex"
   "xxz.bbl" 1599417777 2476 018a4601ef0a9c6a9836ebaae209ed4b "bibtex xxz"
-  "xxz.out" 1599418517 636 77b5fb12e58664ef376bb4067a7220d7 "pdflatex"
-  "xxz.tex" 1599418515 20297 90f18da97e9bf5d7f0d2ebf17291ecbc ""
+  "xxz.out" 1599426573 636 77b5fb12e58664ef376bb4067a7220d7 "pdflatex"
+  "xxz.tex" 1599426571 20297 9fe2cda222485e204ef56416d359b921 ""
   (generated)
+  "xxz.pdf"
+  "xxz.aux"
+  "/Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.log"
   "xxz.out"
   "xxz.log"
-  "/Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.log"
-  "xxz.aux"
-  "xxz.pdf"
   "/Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.pdf"

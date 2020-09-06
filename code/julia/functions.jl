@@ -1,5 +1,5 @@
 function getMagnetization(state, systemSize)
-    systemSize/2 - sum(digits(state, base = 2))
+    sum(digits(state, base = 2)) - systemSize/2
 end
 
 function getMagnonRepresentation(state, systemSize)
@@ -236,4 +236,21 @@ function getGroundStateSubspace(factorization) # in case of the Heisenberg model
         end
     end
     (groundStateSubspaceIndex, factorization[groundStateSubspaceIndex])
+end
+
+function applySpinFlipUp(position, state, subspace, basis, systemSize)
+    dimensions = length(state)
+    newSubspace = 5 - subspace
+    result = zeros(Float64, dimensions) # we can do this because both subspaces are of the same size
+    for it in 1:dimensions
+        coefficient = state[it]
+        magnonRepresentation = getMagnonRepresentation(basis[subspace][it], systemSize)
+        if magnonRepresentation[position] == 0
+            magnonRepresentation[position] = 1
+            newState = getStateIndex(magnonRepresentation, systemSize)
+            index = searchsorted(basis[newSubspace], newState)[1]
+            result[index] += coefficient
+        end
+    end
+    [newSubspace, result]
 end
