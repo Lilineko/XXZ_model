@@ -252,5 +252,5 @@ function applySpinFlipUp(position, state, subspace, basis, systemSize)
             result[index] += coefficient
         end
     end
-    [newSubspace, result]
+    (newSubspace, result)
 end

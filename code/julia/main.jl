@@ -9,18 +9,22 @@ function main()
 
     # construct the basis (with reorganization into proper subspaces)
     basis = constructBasis(systemSize)
+
     # calculate the matrix of the Hamiltonian
     blockHamiltonian = constructBlockHamiltonian(basis, systemSize, couplingJ, anisotropy, magnonInteractions)
+
     # diagonalize all the subspaces
     factorization = diagonalizeHamiltonian(blockHamiltonian)
-    # get the ground state
-    groundSubspaceIndex, groundStateSubspace = getGroundStateSubspace(factorization)
-    groundStateEnergy = groundStateSubspace.values[1] # note: energies are sorted on the output
-    groundStateVector = groundStateSubspace.vectors[:, 1]
-    # apply spin flit to the ground state
-    flippedState = applySpinFlipUp(4, groundStateVector, groundSubspaceIndex, basis, systemSize)
-    # calculate single spin flip spectral function
 
+    # get ground state info
+    groundSubspaceIndex, groundStateSubspace = getGroundStateSubspace(factorization)
+    groundStateEnergy = groundStateSubspace.values[1] # note: energies are sorted in ascending order
+    groundStateVector = groundStateSubspace.vectors[:, 1]
+
+    # apply spin flip to the ground state
+    flippedSubspaceIndex, flippedState = applySpinFlipUp(4, groundStateVector, groundSubspaceIndex, basis, systemSize)
+
+    # calculate single spin flip spectral function
 end
 
 main()
