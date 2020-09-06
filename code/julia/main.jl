@@ -2,7 +2,7 @@ using Gadfly
 using LinearAlgebra
 
 function main()
-    systemSize = 6
+    systemSize = 4
     couplingJ = -1.0
     anisotropy = 0 # for anisotropy = 1 we have additional degeneration, thus allowed range is [0, 1)
     magnonInteractions = 1
@@ -14,9 +14,9 @@ function main()
     # diagonalize all the subspaces
     factorization = diagonalizeHamiltonian(blockHamiltonian)
     # get the ground state
-    # groundSubspaceIndex, groundStateSubspace = getGroundStateSubspace(factorization)
-    # groundStateEnergy = groundStateSubspace.values[1] # note: energies are sorted on the output
-    # groundStateVector = groundStateSubspace.vectors[:, 1]
+    groundSubspaceIndex, groundStateSubspace = getGroundStateSubspace(factorization)
+    groundStateEnergy = groundStateSubspace.values[1] # note: energies are sorted on the output
+    groundStateVector = groundStateSubspace.vectors[:, 1]
     # # calculate single spin flip spectral function
     # (groundStateEnergy, groundStateVector, groundSubspaceIndex)
 end

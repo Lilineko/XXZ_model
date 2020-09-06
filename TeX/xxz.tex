@@ -8,6 +8,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{physics}
 \usepackage{xcolor}
+\usepackage{hyperref}
 
 
 \providecommand{\newoperator}[3]{%
@@ -86,15 +87,15 @@ S_i^y = \frac{1}{2i}\left(S_i^+ - S_i^-\right).
 \end{aligned}
 \end{equation}
 With the above on can split the model Hamiltonian into two parts, the Heisenberg Hamiltonian (denoted here as \textit{parallel} $\parallel$) and \textit{rotated} Heisenberg Hamiltonian (denoted as \textit{perpendicular} $\perp$),
-\begin{equation}
+\begin{equation}\label{eq:H_parts}
 H = \frac{1+\alpha}{2} H_{\parallel} + \frac{1-\alpha}{2} H_{\perp},
 \end{equation}
 where
-\begin{equation}
+\begin{equation}\label{eq:H_parallel}
 H_{\parallel} = J\sum_{\mean{i,j}}S_i^z S_j^z + \frac{1}{2}\left(S_i^+ S_j^- + S_i^- S_j^+\right),
 \end{equation}
 and
-\begin{equation}
+\begin{equation}\label{eq:H_perpendicular}
 H_{\perp} = J\sum_{\mean{i,j}} S_i^z S_j^z - \frac{1}{2}\left(S_i^+ S_j^+ + S_i^- S_j^-\right).
 \end{equation}
 
@@ -183,7 +184,7 @@ For $\alpha \in [0, 1)$ the above can be easily diagonalized yielding following 
 \ket{\psi_3} &=& \frac{1}{\sqrt{2}}\left(\ket{3} + \ket{0}\right), \quad E_3 = \frac{J}{2}a, \\
 \ket{\psi_4} &=& \frac{1}{\sqrt{2}}\left(\ket{3} - \ket{0}\right), \quad E_4 = \frac{J}{2}(2-a).
 \end{eqnarray}
-For ferromagnetic $J < 0$ the ground state energy is $E_4$. It is also true that for a finite system the ground state is always a singlet (see results in Sec. \ref{}). This changes at $\alpha = 1$, i.e. in the case of the Heisenberg model, where for ferromagnetic coupling constant one expects a triplet in the two site example. Also note that for $\alpha = 1$ the coupling between $\ket{0}$ and $\ket{3}$ vanish. Thus case of $\alpha = 1$ is qualitatively different and should be investigated separately from the $\alpha \in [0, 1)$. 
+For ferromagnetic $J < 0$ the ground state energy is $E_4$. It is also true that for a finite system the ground state is always a singlet (see results in Sec. \ref{sec:ed_results}). This changes at $\alpha = 1$, i.e. in the case of the Heisenberg model, where for ferromagnetic coupling constant one expects a triplet in the two site example. Also note that for $\alpha = 1$ the coupling between $\ket{0}$ and $\ket{3}$ vanish. Thus case of $\alpha = 1$ is qualitatively different and should be investigated separately from the $\alpha \in [0, 1)$. 
 
 Let now have a look at the four sites case. There are 16 possible spin states separable into two subspaces of equal sizes. We can enumerate these states using binary representation for each spin configuration as in the two site example, 
 \begin{equation}
@@ -223,17 +224,53 @@ Thus matrix of the Hamiltonian consists of two blocks,
 \end{pmatrix},
 \end{equation}
 where
-\begin{equation}
+\begin{equation}\label{eq:tau_def}
 \tau_{\parallel} = \frac{1+\alpha}{2}, \quad \text{and} \quad \tau_{\perp} = -\frac{1-\alpha}{2}
 \end{equation}
 Diagonalizing each subspace we obtain set of eigenvectors and energies where the ground state energy is $E_\textsc{gs} = E^\textsc{gs}_{\mathcal{C}_0} = \frac{J}{2}\left(-\alpha + \sqrt{8 + \alpha^2}\right)$. It is also worth of noticing that the second lowest energy in the subspace containing the ground state is equal to the lowest energy in the other one subspace $E^{\textsc{gs}}_{\mathcal{C}_1} = J$. Here $E^{\textsc{gs}}_{\mathcal{C}_1}$ does not depend on $\alpha$ but in general, e.g. for larger systems, it does. Similarly we had $E_1 = E_3 = \frac{J}{2}\alpha$ in the two site example. The same holds for any lattice size $n = 2k$ -- second lowest energy is at least doubly degenerated and corresponding eigenstates belong to different subspaces with respect to parity of magnetization and staggered magnetization. 
 
 Cases with odd number of lattice sites are different with the ground state being doubly degenerated for $\alpha \in [0, 1)$ and we are not going to investigate them in details here. Nevertheless we can draw a conclusion for cases with even number of lattice sites. Namely, when number of lattice sites grows the two lowest energies should approach one another because in the thermodynamic limit one shall not be able to distinguish between even and odd number of lattice sites.
 
-\section{Exact Diagonalisation Results}
-In what follows we will investigate larger systems in range of $\alpha \in [0, 1)$. 
+\subsection{Transformation to Bosonic Hamiltonian}
+We would like to investigate the role of magnon-magnon interactions in the XXZ~model. Therefore we have to reformulate the model Hamiltonian originally written in fermionic spin operators. The required relations are given by the Holstein-Primakoff transformation for spin $s = 1/2$,
+\begin{equation}
+	S_i^+ = a_i^\dagger P(n_i), \quad\quad
+	S_i^- = P(n_i) a_i, \quad\quad
+	S_i^z = \frac{1}{2} - n_i,
+\end{equation}
+where $n_i = a_i^\dagger a_i$ and,
+\begin{equation}
+	P(n_i) = \sqrt{1 - n_i}.	
+\end{equation}
+We could expand the function $P(x)$ into a Taylor series. However this approach has a huge drawback -- one needs infinitely many terms to obtain exact representation of $P$. Instead we will use newton series which is exact at integer values of $x$. Since $n_i$ always yields integer values this approach allows us to represent $P$ exactly in a finite (i.e. $2s+1$) number of terms \cite{knig2020newton}, 
+\begin{equation}
+	s = \frac{1}{2} \Rightarrow P(n_i) = 1 - n_i.
+\end{equation}
+From the transformation we used it follows that previously defined state $\ket{\downarrow\downarrow\downarrow\downarrow} = \ket{0} = \ket{0 0 0 0}$ does not have magnons while the state $\ket{\uparrow\uparrow\uparrow\uparrow} = \ket{15} = \ket{1 1 1 1}$ is fully occupied by magnons.
+
+Applying the Holstein-Primakoff transformation to the Heisenberg (Eq.~\ref{eq:H_parallel}) and rotated Heisenberg (Eq.~\ref{eq:H_perpendicular}) Hamiltonians we obtain,
+\begin{eqnarray}
+	H_{\parallel} &=& J\sum_{\mean{i,j}} \left(\frac{1}{2} - n_i\right) \left(\frac{1}{2} - n_j\right) + \frac{1}{2}\left(a_i^\dagger P(n_i) P(n_j) a_j + P(n_i) a_i a_j^\dagger P(n_j)\right), \\
+	H_{\perp} &=& J\sum_{\mean{i,j}} \left(\frac{1}{2} - n_i\right) \left(\frac{1}{2} - n_j\right) - \frac{1}{2}\left(a_i^\dagger P(n_i) a_j^\dagger P(n_j) + P(n_i) a_i P(n_j) a_j\right).
+\end{eqnarray}
+Following the Eqs.~\ref{eq:H_parts}~and~\ref{eq:tau_def}, we arrive at the model Hamiltonian expressed through bosonic operators,
+\begin{eqnarray}\label{eq:H_bosonic}
+	H &=& H_{\mathcal{T}} + H_{\mathcal{V}}, \\
+	H_{\mathcal{V}} &=& J\sum_{\mean{i,j}} \frac{1}{4} - n_i - n_j + \beta n_i n_j, \\
+	H_{\mathcal{T}} &=& \frac{J\tau_{\parallel}}{2} \sum_{\mean{i,j}} a_i^\dagger (1-n_i)(1-n_j)a_j + \frac{\tau_{\perp}}{\tau_{\parallel}} a_i^\dagger a_j^\dagger (1-n_i) (1-n_j) + \text{H.c.}
+\end{eqnarray}
+where the perameter $\beta = 1$ indicates the exact transformations with magnon-magnon interactions taken into account. Putting $\beta = 0$ switch the interactions off. Investigating the model in both limits of parameter $\beta$ we hope to understand the role of magnon-magnon interactions. Note that $1-n_i$ terms ensure we have at most one magnon at single site. Since their role is merely a projection onto a proper subspace we do not consider them as part of magnon-magnon interactions.
+
+\section{Exact Diagonalisation Results}\label{sec:ed_results}
+In what follows we will investigate larger systems in the range of parameter $\alpha \in [0, 1)$ for magnon-magnon interactions both present ($\beta = 1$) and absent ($\beta = 0$). 
 
 \section{TODO}
-1. spectral functions (with/without m-m int) \\
-2. conclusions \\
+\begin{enumerate}
+	\item spectral functions (with/without m-m int)
+	\item conclusions
+\end{enumerate}
+
+\bibliographystyle{apsrev4-1}
+\bibliography{xxz}
+
 \end{document}
