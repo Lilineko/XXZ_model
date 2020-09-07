@@ -254,3 +254,49 @@ function applySpinFlipUp(position, state, subspace, basis, systemSize)
     end
     (newSubspace, result)
 end
+
+function calculateOverlaps(groundSubspaceIndex, groundStateVector, factorization, basis, systemSize)
+    flipSubspaceIndex = 5 - groundSubspaceIndex
+    numberOfEigenstates = length(factorization[flipSubspaceIndex].values)
+    result = Array{Float64, 2}(undef, numberOfEigenstates, systemSize) # we know vectors have real coefficient thus overlaps must be real too
+    for position in 1:systemSize
+        flippedSubspaceIndex, flippedState = applySpinFlipUp(position, groundStateVector, groundSubspaceIndex, basis, systemSize)
+        for index in 1:numberOfEigenstates
+            result[index, position] = sum(factorization[flippedSubspaceIndex].vectors[:, index] .* flippedState)
+        end
+    end
+    result
+end
+
+function calculateGreensFunctionValue(k, ω, groundSubspaceIndex, groundStateEnergy, factorization, overlaps)
+    numberOfEigenstates, systemSize = size(overlaps)
+    flipSubspaceIndex = 5 - groundSubspaceIndex
+    eigenValues = factorization[flipSubspaceIndex].values
+    denominators = Vector{ComplexF64}(undef, numberOfEigenstates)
+    for index in 1:numberOfEigenstates
+        denominators[index] = ω - eigenValues[index] + groundStateEnergy
+    end
+    result = 0
+    for it in 1:systemSize
+        ri = it - 1
+        rightOverlaps = overlaps[:, it]
+        for jt in 1:systemSize
+            rj = jt - 1
+            leftOverlaps = overlaps[:, jt]
+            result += exp(-im * k * (ri - rj)) * sum(rightOverlaps .* leftOverlaps ./ denominators)
+        end
+    end
+    result
+end
+
+function calculateSpectralFunction(kRange, ωRange, δ, systemInfo)
+    groundSubspaceIndex, groundStateEnergy, factorization, overlaps = systemInfo
+    dimensions = (length(kRange), length(ωRange))
+    result = Array{Float64, 2}(undef, dimensions[1], dimensions[2])
+    for it in 1:dimensions[1]
+        for jt in 1:dimensions[2]
+            result[it, jt] = -imag(calculateGreensFunctionValue(kRange[it], ωRange[jt] + δ*im, groundSubspaceIndex, groundStateEnergy, factorization, overlaps)) / π
+        end
+    end
+    result
+end
