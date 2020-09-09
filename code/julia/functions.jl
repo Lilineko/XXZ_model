@@ -255,17 +255,46 @@ function applySpinFlipUp(position, state, subspace, basis, systemSize)
     (newSubspace, result)
 end
 
-function calculateOverlaps(groundSubspaceIndex, groundStateVector, factorization, basis, systemSize)
-    flipSubspaceIndex = 5 - groundSubspaceIndex
-    numberOfEigenstates = length(factorization[flipSubspaceIndex].values)
-    result = Array{Float64, 2}(undef, numberOfEigenstates, systemSize) # we know vectors have real coefficient thus overlaps must be real too
-    for position in 1:systemSize
-        flippedSubspaceIndex, flippedState = applySpinFlipUp(position, groundStateVector, groundSubspaceIndex, basis, systemSize)
-        for index in 1:numberOfEigenstates
-            result[index, position] = sum(factorization[flippedSubspaceIndex].vectors[:, index] .* flippedState)
-        end
+function mapToEigenBasis(state, eigenBasis)
+    dimensions = length(state)
+    result = zeros(Float64, dimensions)
+    for it in 1:dimensions
+        result[it] = sum(state .* eigenBasis[:, it])
     end
     result
+end
+
+function calculateOverlaps(groundSubspaceIndex, groundStateVector, factorization, basis, systemSize)
+    flippedSubspaceIndex = 5 - groundSubspaceIndex
+    numberOfEigenstates = length(factorization[flippedSubspaceIndex].values)
+    result = Array{Float64, 2}(undef, numberOfEigenstates, systemSize) # we know vectors have real coefficient thus overlaps must be real too
+    for position in 1:systemSize
+        _, flippedState = applySpinFlipUp(position, groundStateVector, groundSubspaceIndex, basis, systemSize)
+        result[:, position] .= mapToEigenBasis(flippedState, factorization[flippedSubspaceIndex].vectors)
+    end
+    result
+end
+
+function getSystemInfo(systemSize = 2, magnonInteractions = 1,  anisotropy = 0.0, couplingJ = -1.0)
+    # construct the basis (with reorganization into proper subspaces)
+    basis = constructBasis(systemSize)
+
+    # calculate the matrix of the Hamiltonian
+    blockHamiltonian = constructBlockHamiltonian(basis, systemSize, couplingJ, anisotropy, magnonInteractions)
+
+    # diagonalize all the subspaces
+    factorization = diagonalizeHamiltonian(blockHamiltonian)
+
+    # get ground state info
+    groundSubspaceIndex, groundStateSubspace = getGroundStateSubspace(factorization)
+    groundStateEnergy = groundStateSubspace.values[1] # note: energies are sorted in ascending order
+    groundStateVector = groundStateSubspace.vectors[:, 1]
+
+    # apply spin flip to the ground state and calculate overlaps with eigenstates of the model
+    overlaps = calculateOverlaps(groundSubspaceIndex, groundStateVector, factorization, basis, systemSize)
+
+    # merge system info
+    (groundSubspaceIndex, groundStateEnergy, factorization, overlaps)
 end
 
 function calculateGreensFunctionValue(k, ω, groundSubspaceIndex, groundStateEnergy, factorization, overlaps)
@@ -283,10 +312,11 @@ function calculateGreensFunctionValue(k, ω, groundSubspaceIndex, groundStateEne
         for jt in 1:systemSize
             rj = jt - 1
             leftOverlaps = overlaps[:, jt]
-            result += exp(-im * k * (ri - rj)) * sum(rightOverlaps .* leftOverlaps ./ denominators)
+            numerators = leftOverlaps .* rightOverlaps
+            result += exp(-im * k * (ri - rj)) * sum(numerators ./ denominators)
         end
     end
-    result
+    result / systemSize
 end
 
 function calculateSpectralFunction(kRange, ωRange, δ, systemInfo)
@@ -295,7 +325,7 @@ function calculateSpectralFunction(kRange, ωRange, δ, systemInfo)
     result = Array{Float64, 2}(undef, dimensions[1], dimensions[2])
     for it in 1:dimensions[1]
         for jt in 1:dimensions[2]
-            result[it, jt] = -imag(calculateGreensFunctionValue(kRange[it], ωRange[jt] + δ*im, groundSubspaceIndex, groundStateEnergy, factorization, overlaps)) / π
+            result[it, jt] = (-1.0 / π) * imag(calculateGreensFunctionValue(kRange[it], ωRange[jt] + δ*im, groundSubspaceIndex, groundStateEnergy, factorization, overlaps))
         end
     end
     result
