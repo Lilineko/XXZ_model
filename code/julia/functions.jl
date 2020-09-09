@@ -275,23 +275,38 @@ function calculateOverlaps(groundSubspaceIndex, groundStateVector, factorization
     result
 end
 
-function getSystemInfo(systemSize = 2, magnonInteractions = 1,  anisotropy = 0.0, couplingJ = -1.0)
+function getSystemInfo(systemSize = 2, magnonInteractions = 1,  anisotropy = 0.0, couplingJ = -1.0, info = "")
     # construct the basis (with reorganization into proper subspaces)
     basis = constructBasis(systemSize)
+    if info == "basis"
+        return basis
+    end
 
     # calculate the matrix of the Hamiltonian
     blockHamiltonian = constructBlockHamiltonian(basis, systemSize, couplingJ, anisotropy, magnonInteractions)
+    if info == "matrix"
+        return blockHamiltonian
+    end
 
     # diagonalize all the subspaces
     factorization = diagonalizeHamiltonian(blockHamiltonian)
+    if info == "eigen"
+        return factorization
+    end
 
     # get ground state info
     groundSubspaceIndex, groundStateSubspace = getGroundStateSubspace(factorization)
     groundStateEnergy = groundStateSubspace.values[1] # note: energies are sorted in ascending order
     groundStateVector = groundStateSubspace.vectors[:, 1]
+    if info == "ground"
+        return (groundSubspaceIndex, groundStateSubspace)
+    end
 
     # apply spin flip to the ground state and calculate overlaps with eigenstates of the model
     overlaps = calculateOverlaps(groundSubspaceIndex, groundStateVector, factorization, basis, systemSize)
+    if info == "overlap"
+        return overlaps
+    end
 
     # merge system info
     (groundSubspaceIndex, groundStateEnergy, factorization, overlaps)
