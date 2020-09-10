@@ -225,10 +225,16 @@ function calculateSpectralFunction(kRange, ωRange, δ, systemInfo)
     groundSubspaceIndex, groundStateEnergy, factorization, overlaps = systemInfo
     dimensions = (length(kRange), length(ωRange))
     result = Array{Float64, 2}(undef, dimensions[1], dimensions[2])
-    for it in 1:dimensions[1]
-        for jt in 1:dimensions[2]
+    println()
+    println(" > Calculating Spectral Function : ")
+    for jt in 1:dimensions[2]
+        print(" --> Evaluating Step : ", jt, "/", dimensions[2])
+        for it in 1:dimensions[1]
             result[it, jt] = (-1.0 / π) * imag(calculateGreensFunctionValue(kRange[it], ωRange[jt] + δ*im, groundSubspaceIndex, groundStateEnergy, factorization, overlaps))
         end
+        print("\r")
     end
+    println(" --> Evaluating Step : ", dimensions[2], "/", dimensions[2])
+    println(" --> Evaluation Complete!")
     result
 end

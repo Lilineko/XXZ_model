@@ -263,11 +263,36 @@ where the perameter $\beta = 1$ indicates the exact transformations with magnon-
 From the above-defined transformation it follows that previously defined state $\ket{\downarrow\downarrow\downarrow\downarrow} = \ket{0} = \ket{0 0 0 0}$ does not have magnons while the state $\ket{\uparrow\uparrow\uparrow\uparrow} = \ket{15} = \ket{1 1 1 1}$ is fully occupied by magnons.
 
 \section{Exact Diagonalisation Results}\label{sec:ed_results}
-In what follows we will investigate larger systems in the range of parameter $\alpha \in [0, 1)$ for magnon-magnon interactions both present ($\beta = 1$) and absent ($\beta = 0$). 
+In what follows we investigate larger systems in the range of parameter $\alpha \in [0, 1)$ and magnon-magnon interactions both present ($\beta = 1$) or absent ($\beta = 0$). In addition we look also at intermadiate values of $\beta$ and the limit of $\beta \to -\infty$ in order to understand the role of magnon-magnon interactions.
+
+\subsection{XY~Model Limit}\label{sec:XY_model}
+Let us start with $\alpha = 0$ limit of the XXZ~model, the XY~model. In this limit the model can be solved exactly. The XY~model can be understand as a theory of free spinless fermions with nearest neighbour hopping. In order to arrive at this result one can introduce rising and lowering operators and proceed with Jordan-Wigner transformation. The~spectral function of theXY~model obtained using exact diagonalization (ED) is~presented in~the~Figure~\ref{fig:XY_int}.
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.75\textwidth]{../figures/fig001.png}
+	\caption{Spectral function $S(q,\omega)$ of a single spin flip (magnon excitation) for $\alpha = 0$ and $\beta = 1$ limit of XXZ~model (i.e. XY~model limit).}\label{fig:XY_int}
+\end{figure}
+
+Let see how the spectrum changes when we turn the magnon-magnon interactions off ($\beta = 0$). The~results are presented in the Figure~\ref{fig:XY_noint}. The spectral function looks similar to single magnon in the case of the ferromagnetic Heisenberg model. If fact it is something in between but visibly it bears more resemblence to the single branch than the continuum. In order to understand how does a single branch appears as a solution it is instructive to investigate limit of $\beta \to -\infty$. The spectral function in this case is presented in the Figure~\ref{fig:XY_limit}. 
+
+In the limit of $\beta \to -\infty$ it is basically not possible to have states with two neighbouring magnons, see Eq.~(\ref{eq:H_bosonic}) due to infinite energy cost (for ferromagnetic $J<0$). Therefore terms proportional to $\tau_{\perp}$ in Eq.~(\ref{eq:H_bosonic}) effectively do not play a role. In spin language this means that terms $S_i^+ S_j^+$ and $S_i^- S_j^-$ that are present in the model for $\alpha < 1$ (see Eq.~(\ref{eq:H_perpendicular})) are suppressed. The ground state of the system is the state without magnons, i.e. the state with all the spins pointing down in our case (i.e a particular N\'eel state). Thus it is not suprissing why the spectral function of a single spin flip looks like in the case of the ferromagnetic Heisenberg model. Nevertheless, it is still interresting that switching the interactions off ($\beta = 1 \rightarrow \beta = 0$) influences the spectrum in such a drastic way while difference between spectral function for $\beta = 0$ and $\beta \to -\infty$ is barely visible.
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.75\textwidth]{../figures/fig002.png}
+	\caption{Spectral function $S(q,\omega)$ of a single spin flip (magnon excitation) for $\alpha = 0$ and $\beta = 0$ limit of XXZ~model (i.e. XY~model limit).}\label{fig:XY_noint}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\textwidth]{../figures/fig003.png}
+	\caption{Spectral function $S(q,\omega)$ of a single spin flip (magnon excitation) for $\alpha = 0$ and $\beta \to -\infty$ limit of XXZ~model (i.e. XY~model limit).}\label{fig:XY_limit}
+\end{figure}
+
+Let us now investigate how the spectrum evolves when we change the \textit{strength} of magnon-magnon interactions, i.e. when we contunuously change the parameter $\beta \in (0,1)$. 
 
 \section{TODO}
 \begin{enumerate}
-	\item spectral functions (with/without m-m int)
+	\item spectral functions (scale m-m int)
+	\item investigate anisotropy
 	\item conclusions
 \end{enumerate}
 
