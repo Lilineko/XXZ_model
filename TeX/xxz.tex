@@ -236,7 +236,7 @@ We would like to investigate the role of magnon-magnon interactions in the XXZ~m
 \begin{equation}
 	S_i^+ = a_i^\dagger P(n_i), \quad\quad
 	S_i^- = P(n_i) a_i, \quad\quad
-	S_i^z = \frac{1}{2} - n_i,
+	S_i^z = n_i - \frac{1}{2},
 \end{equation}
 where $n_i = a_i^\dagger a_i$ and,
 \begin{equation}
@@ -249,8 +249,8 @@ We could expand the function $P(x)$ into a Taylor series. However this approach 
 
 Applying the Holstein-Primakoff transformation to the Heisenberg (Eq.~\ref{eq:H_parallel}) and rotated Heisenberg (Eq.~\ref{eq:H_perpendicular}) Hamiltonians we obtain,
 \begin{eqnarray}
-	H_{\parallel} &=& J\sum_{\mean{i,j}} \left(\frac{1}{2} - n_i\right) \left(\frac{1}{2} - n_j\right) + \frac{1}{2}\left(a_i^\dagger P(n_i) P(n_j) a_j + P(n_i) a_i a_j^\dagger P(n_j)\right), \\
-	H_{\perp} &=& J\sum_{\mean{i,j}} \left(\frac{1}{2} - n_i\right) \left(\frac{1}{2} - n_j\right) - \frac{1}{2}\left(a_i^\dagger P(n_i) a_j^\dagger P(n_j) + P(n_i) a_i P(n_j) a_j\right).
+	H_{\parallel} &=& J\sum_{\mean{i,j}} \left(n_i - \frac{1}{2}\right) \left(n_j - \frac{1}{2}\right) + \frac{1}{2}\left(a_i^\dagger P(n_i) P(n_j) a_j + P(n_i) a_i a_j^\dagger P(n_j)\right), \\
+	H_{\perp} &=& J\sum_{\mean{i,j}} \left(n_i - \frac{1}{2}\right) \left(n_j - \frac{1}{2}\right) - \frac{1}{2}\left(a_i^\dagger P(n_i) a_j^\dagger P(n_j) + P(n_i) a_i P(n_j) a_j\right).
 \end{eqnarray}
 Following the Eqs.~\ref{eq:H_parts}~and~\ref{eq:tau_def}, we arrive at the model Hamiltonian expressed through bosonic operators,
 \begin{eqnarray}\label{eq:H_bosonic}
@@ -266,14 +266,14 @@ From the above-defined transformation it follows that previously defined state $
 In what follows we investigate larger systems in the range of parameter $\alpha \in [0, 1)$ and magnon-magnon interactions both present ($\beta = 1$) or absent ($\beta = 0$). In addition we look also at intermadiate values of $\beta$ and the limit of $\beta \to -\infty$ in order to understand the role of magnon-magnon interactions.
 
 \subsection{XY~Model Limit}\label{sec:XY_model}
-Let us start with $\alpha = 0$ limit of the XXZ~model, the XY~model. In this limit the model can be solved exactly. The XY~model can be understand as a theory of free spinless fermions with nearest neighbour hopping. In order to arrive at this result one can introduce rising and lowering operators and proceed with Jordan-Wigner transformation. The~spectral function of theXY~model obtained using exact diagonalization (ED) is~presented in~the~Figure~\ref{fig:XY_int}.
+Let us start with $\alpha = 0$ limit of the XXZ~model, the XY~model. In this limit the model can be solved exactly. The XY~model can be understand as a theory of free spinless fermions with nearest neighbour hopping. In order to arrive at this result one can introduce rising and lowering operators and proceed with Jordan-Wigner transformation \cite{JordanWigner}. The~spectral function of the~XY~model obtained using exact diagonalization (ED) is~presented in~the~Figure~\ref{fig:XY_int}.
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.75\textwidth]{../figures/fig001.png}
 	\caption{Spectral function $S(q,\omega)$ of a single spin flip (magnon excitation) for $\alpha = 0$ and $\beta = 1$ limit of XXZ~model (i.e. XY~model limit).}\label{fig:XY_int}
 \end{figure}
 
-Let see how the spectrum changes when we turn the magnon-magnon interactions off ($\beta = 0$). The~results are presented in the Figure~\ref{fig:XY_noint}. The spectral function looks similar to single magnon in the case of the ferromagnetic Heisenberg model. If fact it is something in between but visibly it bears more resemblence to the single branch than the continuum. In order to understand how does a single branch appears as a solution it is instructive to investigate limit of $\beta \to -\infty$. The spectral function in this case is presented in the Figure~\ref{fig:XY_limit}. 
+Let see how the spectrum changes when we turn the magnon-magnon interactions off ($\beta = 0$). The~results are presented in the Figure~\ref{fig:XY_noint}. The spectral function looks similar to single magnon in the case of the ferromagnetic Heisenberg model. In fact it is something in between but visibly it bears more resemblence to the single branch than the continuum. In order to understand how does a single branch appears as a solution it is instructive to investigate limit of $\beta \to -\infty$. The spectral function in this case is presented in the Figure~\ref{fig:XY_limit}. 
 
 In the limit of $\beta \to -\infty$ it is basically not possible to have states with two neighbouring magnons, see Eq.~(\ref{eq:H_bosonic}) due to infinite energy cost (for ferromagnetic $J<0$). Therefore terms proportional to $\tau_{\perp}$ in Eq.~(\ref{eq:H_bosonic}) effectively do not play a role. In spin language this means that terms $S_i^+ S_j^+$ and $S_i^- S_j^-$ that are present in the model for $\alpha < 1$ (see Eq.~(\ref{eq:H_perpendicular})) are suppressed. The ground state of the system is the state without magnons, i.e. the state with all the spins pointing down in our case (i.e a particular N\'eel state). Thus it is not suprissing why the spectral function of a single spin flip looks like in the case of the ferromagnetic Heisenberg model. Nevertheless, it is still interresting that switching the interactions off ($\beta = 1 \rightarrow \beta = 0$) influences the spectrum in such a drastic way while difference between spectral function for $\beta = 0$ and $\beta \to -\infty$ is barely visible.
 \begin{figure}[ht]

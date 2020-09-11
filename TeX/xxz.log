@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.6980) (preloaded format=pdflatex 2020.8.29)  10 SEP 2020 20:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.6980) (preloaded format=pdflatex 2020.8.29)  11 SEP 2020 16:04
 entering extended mode
 **/Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.tex
 (/Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.tex
@@ -356,17 +356,17 @@ Overfull \hbox (2.19305pt too wide) in paragraph at lines 263--264
  []
 
 [6]
-<../figures/fig001.png, id=120, 602.25pt x 401.5pt>
+<../figures/fig001.png, id=121, 602.25pt x 401.5pt>
 File: ../figures/fig001.png Graphic file (type png)
 <use ../figures/fig001.png>
 Package pdftex.def Info: ../figures/fig001.png  used on input line 272.
 (pdftex.def)             Requested size: 339.72592pt x 226.49258pt.
-<../figures/fig002.png, id=126, 602.25pt x 401.5pt>
+<../figures/fig002.png, id=127, 602.25pt x 401.5pt>
 File: ../figures/fig002.png Graphic file (type png)
 <use ../figures/fig002.png>
 Package pdftex.def Info: ../figures/fig002.png  used on input line 281.
 (pdftex.def)             Requested size: 339.72592pt x 226.49258pt.
-<../figures/fig003.png, id=127, 602.25pt x 401.5pt>
+<../figures/fig003.png, id=128, 602.25pt x 401.5pt>
 File: ../figures/fig003.png Graphic file (type png)
 <use ../figures/fig003.png>
 Package pdftex.def Info: ../figures/fig003.png  used on input line 286.
@@ -383,17 +383,17 @@ Package rerunfilecheck Info: File `xxz.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 302.
  ) 
 Here is how much of TeX's memory you used:
- 8342 strings out of 483124
- 129638 string characters out of 2954754
- 411552 words of memory out of 3000000
- 23495 multiletter control sequences out of 15000+200000
- 542531 words of font info for 56 fonts, out of 3000000 for 9000
+ 8345 strings out of 483124
+ 129684 string characters out of 2954754
+ 411612 words of memory out of 3000000
+ 23497 multiletter control sequences out of 15000+200000
+ 542838 words of font info for 57 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  44i,11n,40p,1446b,398s stack positions out of 5000i,500n,10000p,200000b,50000s
  </Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1200.pk></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr6.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy6.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti12.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on /Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.pdf (9 pages, 242629 bytes).
+Output written on /Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.pdf (9 pages, 243649 bytes).
 PDF statistics:
- 209 PDF objects out of 1000 (max. 8388607)
- 57 named destinations out of 1000 (max. 500000)
+ 213 PDF objects out of 1000 (max. 8388607)
+ 58 named destinations out of 1000 (max. 500000)
  96 words of extra memory for PDF output out of 10000 (max. 10000000)
 
