@@ -5,8 +5,8 @@ using ExcelFiles
 function main()
     # parameters of the model
     systemSize = 12
-    magnonInteractions = 0.0
-    anisotropy = 0.25 # allowed range is [0, 1); for anisotropy = 1 we have additional degeneration
+    magnonInteractions = 1.0
+    anisotropy = 0.0 # allowed range is [0, 1); for anisotropy = 1 we have additional degeneration
     couplingJ = -1.0
 
     # prepare and diagonalize the model
@@ -22,7 +22,7 @@ function main()
 
     # plot the result
     figure = heatmap(kRange, ωRange, transpose(A), clim = (0, 1), colorbar = true)
-    display(figure)
+    # display(figure)
     # return figure
 end
 
