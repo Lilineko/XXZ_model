@@ -6,7 +6,7 @@ function main()
     # parameters of the model
     systemSize = 14
     magnonInteractions = 1.0
-    anisotropy = 0.70 # allowed range is [0, 1); for anisotropy = 1 we have additional degeneration
+    anisotropy = 0.2 # allowed range is [0, 1); for anisotropy = 1 we have additional degeneration
     couplingJ = -1.0
 
     # prepare and diagonalize the model
