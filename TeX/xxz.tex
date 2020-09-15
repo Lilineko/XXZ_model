@@ -9,7 +9,9 @@
 \usepackage{physics}
 \usepackage{xcolor}
 \usepackage{hyperref}
+\usepackage{subfig}
 
+\captionsetup[subfigure]{justification=raggedright}
 
 \providecommand{\newoperator}[3]{%
 	\newcommand*{#1}{\mathop{#2}#3}}
@@ -258,15 +260,13 @@ Following the Eqs.~\ref{eq:H_parts}~and~\ref{eq:tau_def}, we arrive at the model
 	H_{\mathcal{V}} &=& J\sum_{\mean{i,j}} \frac{1}{4} - n_i - n_j + \beta n_i n_j, \\
 	H_{\mathcal{T}} &=& \frac{J\tau_{\parallel}}{2} \sum_{\mean{i,j}} a_i^\dagger (1-n_i)(1-n_j)a_j + \frac{\tau_{\perp}}{\tau_{\parallel}} a_i^\dagger a_j^\dagger (1-n_i) (1-n_j) + \text{H.c.}
 \end{eqnarray}
-where the perameter $\beta = 1$ indicates the exact transformations with magnon-magnon interactions taken into account. Putting $\beta = 0$ switch the interactions off. Investigating the model in both limits of parameter $\beta$ we hope to understand the role of magnon-magnon interactions. Note that $1-n_i$ terms ensure we have at most one magnon at single site. Since their role is merely a projection onto a proper subspace we do not consider them as part of magnon-magnon interactions. 
-
-From the above-defined transformation it follows that previously defined state $\ket{\downarrow\downarrow\downarrow\downarrow} = \ket{0} = \ket{0 0 0 0}$ does not have magnons while the state $\ket{\uparrow\uparrow\uparrow\uparrow} = \ket{15} = \ket{1 1 1 1}$ is fully occupied by magnons.
+where the perameter $\beta = 1$ indicates the exact transformations with magnon-magnon interactions taken into account. Putting $\beta = 0$ switch the interactions off. Investigating the model in both limits of parameter $\beta$ we hope to understand the role of magnon-magnon interactions. Note that $1-n_i$ terms ensure we have at most one magnon at single site. Since their role is merely a projection onto a proper subspace we do not consider them as part of magnon-magnon interactions. From the above-defined transformation it follows that previously defined state $\ket{\downarrow\downarrow\downarrow\downarrow} = \ket{0} = \ket{0 0 0 0}$ does not have magnons while the state $\ket{\uparrow\uparrow\uparrow\uparrow} = \ket{15} = \ket{1 1 1 1}$ is fully occupied by magnons.
 
 \section{Exact Diagonalisation Results}\label{sec:ed_results}
 In what follows we investigate larger systems in the range of parameter $\alpha \in [0, 1)$ and magnon-magnon interactions both present ($\beta = 1$) or absent ($\beta = 0$). In addition we look also at intermadiate values of $\beta$ and the limit of $\beta \to -\infty$ in order to understand the role of magnon-magnon interactions.
 
 \subsection{XY~Model Limit}\label{sec:XY_model}
-Let us start with $\alpha = 0$ limit of the XXZ~model, the XY~model. In this limit the model can be solved exactly. The XY~model can be understand as a theory of free spinless fermions with nearest neighbour hopping. In order to arrive at this result one can introduce rising and lowering operators and proceed with Jordan-Wigner transformation \cite{JordanWigner}. The~spectral function of the~XY~model obtained using exact diagonalization (ED) is~presented in~the~Figure~\ref{fig:XY_int}.
+Let us start with $\alpha = 0$ limit of the XXZ~model, the XY~model. In this limit the model can be solved exactly. The XY~model can be understood as a theory of free spinless fermions with nearest neighbour hopping. In order to arrive at this result one introduces rising and lowering operators and proceeds with Jordan-Wigner transformation \cite{JordanWigner}. The~spectral function of the~XY~model obtained using exact diagonalization (ED) is~presented in~the~Figure~\ref{fig:XY_int}.
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.75\textwidth]{../figures/fig001.png}
@@ -287,13 +287,78 @@ In the limit of $\beta \to -\infty$ it is basically not possible to have states 
 	\caption{Spectral function $S(q,\omega)$ of a single spin flip (magnon excitation) for $\alpha = 0$ and $\beta \to -\infty$ limit of XXZ~model (i.e. XY~model limit).}\label{fig:XY_limit}
 \end{figure}
 
-Let us now investigate how the spectrum evolves when we change the \textit{strength} of magnon-magnon interactions, i.e. when we contunuously change the parameter $\beta \in (0,1)$. 
+Let us now investigate how the spectrum evolves when we change the \textit{strength} of magnon-magnon interactions, i.e. when we contunuously change the parameter $\beta \in [0,1]$. Figure~\ref{fig:XY_beta_dep} shows calculated results for varius $\beta$ values.
+\begin{figure}
+	\centering
+	\subfloat[$\beta = 1.0$]{
+		\includegraphics[width=0.45\textwidth]{../figures/fig001.png}
+	}
+	\subfloat[$\beta = 0.95$]{
+		\includegraphics[width=0.45\textwidth]{../figures/fig008.png}
+	}
+	\\
+	\subfloat[$\beta = 0.9$]{
+		\includegraphics[width=0.45\textwidth]{../figures/fig004.png}
+	}
+	\subfloat[$\beta = 0.85$]{
+		\includegraphics[width=0.45\textwidth]{../figures/fig005.png}
+	}
+	\\
+	\subfloat[$\beta = 0.80$]{
+		\includegraphics[width=0.45\textwidth]{../figures/fig006.png}
+	}
+	\subfloat[$\beta = 0.75$]{
+		\includegraphics[width=0.45\textwidth]{../figures/fig007.png}
+	}
+	\\
+	\subfloat[$\beta = 0.65$]{
+		\includegraphics[width=0.45\textwidth]{../figures/fig009.png}
+	}
+	\subfloat[$\beta = 0.5$]{
+		\includegraphics[width=0.45\textwidth]{../figures/fig010.png}
+	}
+	\caption{Spectral function $S(q,\omega)$ of a single spin flip (magnon excitation) for $\alpha = 0$ and various $\beta$ points.}\label{fig:XY_beta_dep}
+\end{figure}
+We can observe the continuum being pushed up while the value of $\beta$ decreases. Eventually the gap opens up and we can see a quasiparticle peak. For even higher $\beta$ the continuum is destroyed and the ladder spactrum appears around $k = \pi$. (In order to say more on when the gap opens up and whether the ladder spectrum in not only an artifact of small system size we need to investigate the model for larger lattices.)
+
+\subsection{Anisotropy Effects}
+Let us now investigate the effects the anisptropy has on the spectral function of a single hole in the~XXZ~model. 
+
+\begin{figure}
+	\centering
+	\subfloat[$\alpha = 0.9$]{
+		\includegraphics[width=0.45\textwidth]{../figures/fig012.png}
+	}
+	\subfloat[$\alpha = 0.8$]{
+		\includegraphics[width=0.45\textwidth]{../figures/fig013.png}
+	}
+	\\
+	\subfloat[$\alpha = 0.7$]{
+		\includegraphics[width=0.45\textwidth]{../figures/fig002.png}
+	}
+	\subfloat[$\alpha = 0.5$]{
+		\includegraphics[width=0.45\textwidth]{../figures/fig005.png}
+	}
+	\\
+	\subfloat[$\alpha = 0.4$]{
+		\includegraphics[width=0.45\textwidth]{../figures/fig006.png}
+	}
+	\subfloat[$\alpha = 0.3$]{
+		\includegraphics[width=0.45\textwidth]{../figures/fig007.png}
+	}
+	\\
+	\subfloat[$\alpha = 0.2$]{
+		\includegraphics[width=0.45\textwidth]{../figures/fig009.png}
+	}
+	\subfloat[$\alpha = 0.1$]{
+		\includegraphics[width=0.45\textwidth]{../figures/fig010.png}
+	}
+	\caption{Spectral function $S(q,\omega)$ of a single spin flip (magnon excitation) for $\beta = 1$ and various $\alpha$ points.}\label{fig:XXZ_alpha_dep}
+\end{figure}
 
 \section{TODO}
 \begin{enumerate}
-	\item spectral functions (scale m-m int)
-	\item investigate anisotropy
-	\item conclusions
+	\item investigate interplay of anisotropy and magnon magnon interactions
 \end{enumerate}
 
 \bibliographystyle{apsrev4-1}

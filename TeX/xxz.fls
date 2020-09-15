@@ -103,6 +103,12 @@ INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/tex/late
 INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/tex/latex/rerunfilecheck/rerunfilecheck.sty
 INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/tex/generic/uniquecounter/uniquecounter.sty
 INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/tex/generic/uniquecounter/uniquecounter.sty
+INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/tex/latex/subfig/subfig.sty
+INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/tex/latex/subfig/subfig.sty
+INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/tex/latex/caption/caption.sty
+INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/tex/latex/caption/caption.sty
+INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/tex/latex/caption/caption3.sty
+INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/tex/latex/caption/caption3.sty
 INPUT /Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.aux
 INPUT /Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.aux
 OUTPUT /Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.aux
@@ -170,6 +176,73 @@ INPUT ../figures/fig003.png
 INPUT ../figures/fig003.png
 INPUT ../figures/fig003.png
 INPUT ../figures/fig003.png
+INPUT ../figures/fig001.png
+INPUT ../figures/fig001.png
+INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msam7.tfm
+INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msam5.tfm
+INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+INPUT ../figures/fig008.png
+INPUT ../figures/fig008.png
+INPUT ../figures/fig008.png
+INPUT ../figures/fig008.png
+INPUT ../figures/fig008.png
+INPUT ../figures/fig004.png
+INPUT ../figures/fig004.png
+INPUT ../figures/fig004.png
+INPUT ../figures/fig004.png
+INPUT ../figures/fig004.png
+INPUT ../figures/fig005.png
+INPUT ../figures/fig005.png
+INPUT ../figures/fig005.png
+INPUT ../figures/fig005.png
+INPUT ../figures/fig005.png
+INPUT ../figures/fig006.png
+INPUT ../figures/fig006.png
+INPUT ../figures/fig006.png
+INPUT ../figures/fig006.png
+INPUT ../figures/fig006.png
+INPUT ../figures/fig007.png
+INPUT ../figures/fig007.png
+INPUT ../figures/fig007.png
+INPUT ../figures/fig007.png
+INPUT ../figures/fig007.png
+INPUT ../figures/fig009.png
+INPUT ../figures/fig009.png
+INPUT ../figures/fig009.png
+INPUT ../figures/fig009.png
+INPUT ../figures/fig009.png
+INPUT ../figures/fig010.png
+INPUT ../figures/fig010.png
+INPUT ../figures/fig010.png
+INPUT ../figures/fig010.png
+INPUT ../figures/fig010.png
+INPUT ../figures/fig012.png
+INPUT ../figures/fig012.png
+INPUT ../figures/fig012.png
+INPUT ../figures/fig012.png
+INPUT ../figures/fig012.png
+INPUT ../figures/fig013.png
+INPUT ../figures/fig013.png
+INPUT ../figures/fig013.png
+INPUT ../figures/fig013.png
+INPUT ../figures/fig013.png
+INPUT ../figures/fig002.png
+INPUT ../figures/fig002.png
+INPUT ../figures/fig005.png
+INPUT ../figures/fig005.png
+INPUT ../figures/fig006.png
+INPUT ../figures/fig006.png
+INPUT ../figures/fig007.png
+INPUT ../figures/fig007.png
+INPUT ../figures/fig009.png
+INPUT ../figures/fig009.png
+INPUT ../figures/fig010.png
+INPUT ../figures/fig010.png
 INPUT /Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.bbl
 INPUT /Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.bbl
 INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/tfm/public/cm/cmbx12.tfm
@@ -184,10 +257,14 @@ INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/ty
 INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
 INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb
+INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi12.pfb
 INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi12.pfb
 INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb
 INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb
+INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb
+INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb
 INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb
 INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb
 INPUT /Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr6.pfb

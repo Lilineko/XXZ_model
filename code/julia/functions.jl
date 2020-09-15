@@ -221,6 +221,31 @@ function calculateGreensFunctionValue(k, ω, groundSubspaceIndex, groundStateEne
     result / systemSize
 end
 
+# function calculateSpectralFunction(kRange, ωRange, δ, systemInfo)
+#     groundSubspaceIndex, groundStateEnergy, factorization, overlaps = systemInfo
+#     dimensions = (length(kRange), length(ωRange))
+#     result = Array{Float64, 2}(undef, dimensions[1], dimensions[2])
+#     println()
+#     println(" > Calculating Spectral Function : ")
+#     progress = 0
+#     nSteps = ceil(Int64, dimensions[2] / Threads.nthreads())
+#     Threads.@threads for jt in 1:dimensions[2]
+#         if Threads.threadid() == 1
+#             progress += 1
+#             print(" --> Evaluating Step : ", progress, "/", nSteps)
+#         end
+#         @simd for it in 1:dimensions[1]
+#             result[it, jt] = (-1.0 / π) * imag(calculateGreensFunctionValue(kRange[it], ωRange[jt] + δ*im, groundSubspaceIndex, groundStateEnergy, factorization, overlaps))
+#         end
+#         if Threads.threadid() == 1
+#             print("\r")
+#         end
+#     end
+#     println(" --> Evaluating Step : ", nSteps, "/", nSteps)
+#     println(" --> Evaluation Complete!")
+#     result
+# end
+
 function calculateSpectralFunction(kRange, ωRange, δ, systemInfo)
     groundSubspaceIndex, groundStateEnergy, factorization, overlaps = systemInfo
     dimensions = (length(kRange), length(ωRange))
@@ -228,20 +253,27 @@ function calculateSpectralFunction(kRange, ωRange, δ, systemInfo)
     println()
     println(" > Calculating Spectral Function : ")
     progress = 0
-    nSteps = ceil(Int64, dimensions[2] / Threads.nthreads())
-    Threads.@threads for jt in 1:dimensions[2]
-        if Threads.threadid() == 1
-            progress += 1
-            print(" --> Evaluating Step : ", progress, "/", nSteps)
-        end
-        @simd for it in 1:dimensions[1]
+    nSteps = dimensions[2]
+    for jt in 1:nSteps
+        progress += 1
+        print(" --> Evaluating Step : ", progress, "/", nSteps)
+        for it in 1:dimensions[1]
             result[it, jt] = (-1.0 / π) * imag(calculateGreensFunctionValue(kRange[it], ωRange[jt] + δ*im, groundSubspaceIndex, groundStateEnergy, factorization, overlaps))
         end
-        if Threads.threadid() == 1
-            print("\r")
-        end
+        print("\r")
     end
     println(" --> Evaluating Step : ", nSteps, "/", nSteps)
     println(" --> Evaluation Complete!")
     result
+end
+
+function getNextFigureName(path)
+    fileNames = readdir(path)
+    index = 0;
+    for name in fileNames
+        if name[1:3] == "fig"
+            index = max(index, parse(Int, name[4:6]))
+        end
+    end
+    string(path, "fig", lpad(index + 1, 3, "0"), ".png")
 end

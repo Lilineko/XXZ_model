@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.6980) (preloaded format=pdflatex 2020.8.29)  11 SEP 2020 16:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.6980) (preloaded format=pdflatex 2020.8.29)  15 SEP 2020 23:50
 entering extended mode
 **/Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.tex
 (/Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.tex
@@ -252,25 +252,58 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 286.
 )
 \Hy@SectionHShift=\skip52
+) ("/Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/tex/latex/subfig/subfig.sty"
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+ ("/Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/tex/latex/caption/caption.sty"
+Package: caption 2020/05/30 v3.4k Customizing captions (AR)
+ ("/Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/tex/latex/caption/caption3.sty"
+Package: caption3 2020/07/20 v1.12b caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 61.
+\captionmargin=\dimen158
+\captionmargin@=\dimen159
+\captionwidth=\dimen160
+\caption@tempdima=\dimen161
+\caption@indent=\dimen162
+\caption@parindent=\dimen163
+\caption@hangindent=\dimen164
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count273
+\c@continuedfloat=\count274
+Package caption Info: hyperref package is loaded.
+)
+\c@KVtest=\count275
+\sf@farskip=\skip53
+\sf@captopadj=\dimen165
+\sf@capskip=\skip54
+\sf@nearskip=\skip55
+\c@subfigure=\count276
+\c@subfigure@save=\count277
+\c@lofdepth=\count278
+\c@subtable=\count279
+\c@subtable@save=\count280
+\c@lotdepth=\count281
+\sf@top=\skip56
+\sf@bottom=\skip57
 ) (/Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.aux)
 \openout1 = `xxz.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -308,23 +341,23 @@ LaTeX Font Info:    ... okay on input line 62.
 
 ("/Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/tex/context/base/mkii/supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count273
-\scratchdimen=\dimen158
+\scratchcounter=\count282
+\scratchdimen=\dimen166
 \scratchbox=\box48
-\nofMPsegments=\count274
-\nofMParguments=\count275
+\nofMPsegments=\count283
+\nofMParguments=\count284
 \everyMPshowfont=\toks25
-\MPscratchCnt=\count276
-\MPscratchDim=\dimen159
-\MPnumerator=\count277
-\makeMPintoPDFobject=\count278
+\MPscratchCnt=\count285
+\MPscratchDim=\dimen167
+\MPnumerator=\count286
+\makeMPintoPDFobject=\count287
 \everyMPtoPDFconversion=\toks26
 ) ("/Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/tex/latex/epstopdf-pkg/epstopdf-base.sty"
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
 )
 \AtBeginShipoutBox=\box49
-Package hyperref Info: Link coloring OFF on input line 62.
+Package hyperref Info: Link coloring OFF on input line 64.
  ("/Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/tex/latex/hyperref/nameref.sty"
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
  ("/Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/tex/latex/refcount/refcount.sty"
@@ -332,68 +365,141 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) ("/Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/tex/generic/gettitlestring/gettitlestring.sty"
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count279
+\c@section@level=\count288
 )
-LaTeX Info: Redefining \ref on input line 62.
-LaTeX Info: Redefining \pageref on input line 62.
-LaTeX Info: Redefining \nameref on input line 62.
+LaTeX Info: Redefining \ref on input line 64.
+LaTeX Info: Redefining \pageref on input line 64.
+LaTeX Info: Redefining \nameref on input line 64.
  (/Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.out) (/Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.out)
 \@outlinefile=\write3
 \openout3 = `xxz.out'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 65.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 67.
  ("/Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 65.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 67.
  ("/Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/data/pdftex/config/pdftex.map}] [2] [3] [4] [5]
-Overfull \hbox (2.19305pt too wide) in paragraph at lines 263--264
-[]\OT1/cmr/m/n/12 From the above-defined trans-for-ma-tion it fol-lows that pre-vi-ously de-fined state $[] =
- []
-
-[6]
-<../figures/fig001.png, id=121, 602.25pt x 401.5pt>
+{/Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/data/pdftex/config/pdftex.map}] [2] [3] [4] [5] [6]
+<../figures/fig001.png, id=125, 602.25pt x 401.5pt>
 File: ../figures/fig001.png Graphic file (type png)
 <use ../figures/fig001.png>
 Package pdftex.def Info: ../figures/fig001.png  used on input line 272.
 (pdftex.def)             Requested size: 339.72592pt x 226.49258pt.
-<../figures/fig002.png, id=127, 602.25pt x 401.5pt>
+<../figures/fig002.png, id=131, 602.25pt x 401.5pt>
 File: ../figures/fig002.png Graphic file (type png)
 <use ../figures/fig002.png>
 Package pdftex.def Info: ../figures/fig002.png  used on input line 281.
 (pdftex.def)             Requested size: 339.72592pt x 226.49258pt.
-<../figures/fig003.png, id=128, 602.25pt x 401.5pt>
+<../figures/fig003.png, id=132, 602.25pt x 401.5pt>
 File: ../figures/fig003.png Graphic file (type png)
 <use ../figures/fig003.png>
 Package pdftex.def Info: ../figures/fig003.png  used on input line 286.
 (pdftex.def)             Requested size: 339.72592pt x 226.49258pt.
- [7 <../figures/fig001.png>] [8 <../figures/fig002.png> <../figures/fig003.png>] (/Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 302.
- [9]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 302.
+ [7 <../figures/fig001.png>]
+File: ../figures/fig001.png Graphic file (type png)
+<use ../figures/fig001.png>
+Package pdftex.def Info: ../figures/fig001.png  used on input line 295.
+(pdftex.def)             Requested size: 203.83417pt x 135.88942pt.
+<../figures/fig008.png, id=143, 602.25pt x 401.5pt>
+File: ../figures/fig008.png Graphic file (type png)
+<use ../figures/fig008.png>
+Package pdftex.def Info: ../figures/fig008.png  used on input line 298.
+(pdftex.def)             Requested size: 203.83417pt x 135.88942pt.
+<../figures/fig004.png, id=144, 602.25pt x 401.5pt>
+File: ../figures/fig004.png Graphic file (type png)
+<use ../figures/fig004.png>
+Package pdftex.def Info: ../figures/fig004.png  used on input line 302.
+(pdftex.def)             Requested size: 203.83417pt x 135.88942pt.
+<../figures/fig005.png, id=145, 602.25pt x 401.5pt>
+File: ../figures/fig005.png Graphic file (type png)
+<use ../figures/fig005.png>
+Package pdftex.def Info: ../figures/fig005.png  used on input line 305.
+(pdftex.def)             Requested size: 203.83417pt x 135.88942pt.
+<../figures/fig006.png, id=146, 602.25pt x 401.5pt>
+File: ../figures/fig006.png Graphic file (type png)
+<use ../figures/fig006.png>
+Package pdftex.def Info: ../figures/fig006.png  used on input line 309.
+(pdftex.def)             Requested size: 203.83417pt x 135.88942pt.
+<../figures/fig007.png, id=147, 602.25pt x 401.5pt>
+File: ../figures/fig007.png Graphic file (type png)
+<use ../figures/fig007.png>
+Package pdftex.def Info: ../figures/fig007.png  used on input line 312.
+(pdftex.def)             Requested size: 203.83417pt x 135.88942pt.
+<../figures/fig009.png, id=148, 602.25pt x 401.5pt>
+File: ../figures/fig009.png Graphic file (type png)
+<use ../figures/fig009.png>
+Package pdftex.def Info: ../figures/fig009.png  used on input line 316.
+(pdftex.def)             Requested size: 203.83417pt x 135.88942pt.
+<../figures/fig010.png, id=149, 602.25pt x 401.5pt>
+File: ../figures/fig010.png Graphic file (type png)
+<use ../figures/fig010.png>
+Package pdftex.def Info: ../figures/fig010.png  used on input line 319.
+(pdftex.def)             Requested size: 203.83417pt x 135.88942pt.
+ [8 <../figures/fig002.png> <../figures/fig003.png>] [9 <../figures/fig008.png> <../figures/fig004.png> <../figures/fig005.png> <../figures/fig006.png> <../figures/fig007.png> <../figures/fig009.png> <../figures/fig010.png>]
+<../figures/fig012.png, id=169, 602.25pt x 401.5pt>
+File: ../figures/fig012.png Graphic file (type png)
+<use ../figures/fig012.png>
+Package pdftex.def Info: ../figures/fig012.png  used on input line 331.
+(pdftex.def)             Requested size: 203.83417pt x 135.88942pt.
+<../figures/fig013.png, id=170, 602.25pt x 401.5pt>
+File: ../figures/fig013.png Graphic file (type png)
+<use ../figures/fig013.png>
+Package pdftex.def Info: ../figures/fig013.png  used on input line 334.
+(pdftex.def)             Requested size: 203.83417pt x 135.88942pt.
+File: ../figures/fig002.png Graphic file (type png)
+<use ../figures/fig002.png>
+Package pdftex.def Info: ../figures/fig002.png  used on input line 338.
+(pdftex.def)             Requested size: 203.83417pt x 135.88942pt.
+File: ../figures/fig005.png Graphic file (type png)
+<use ../figures/fig005.png>
+Package pdftex.def Info: ../figures/fig005.png  used on input line 341.
+(pdftex.def)             Requested size: 203.83417pt x 135.88942pt.
+File: ../figures/fig006.png Graphic file (type png)
+<use ../figures/fig006.png>
+Package pdftex.def Info: ../figures/fig006.png  used on input line 345.
+(pdftex.def)             Requested size: 203.83417pt x 135.88942pt.
+File: ../figures/fig007.png Graphic file (type png)
+<use ../figures/fig007.png>
+Package pdftex.def Info: ../figures/fig007.png  used on input line 348.
+(pdftex.def)             Requested size: 203.83417pt x 135.88942pt.
+File: ../figures/fig009.png Graphic file (type png)
+<use ../figures/fig009.png>
+Package pdftex.def Info: ../figures/fig009.png  used on input line 352.
+(pdftex.def)             Requested size: 203.83417pt x 135.88942pt.
+File: ../figures/fig010.png Graphic file (type png)
+<use ../figures/fig010.png>
+Package pdftex.def Info: ../figures/fig010.png  used on input line 355.
+(pdftex.def)             Requested size: 203.83417pt x 135.88942pt.
+ (/Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 367.
+ [10] [11 <../figures/fig012.png> <../figures/fig013.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 367.
  (/Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 302.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 302.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 367.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 367.
 Package rerunfilecheck Info: File `xxz.out' has not changed.
-(rerunfilecheck)             Checksum: 9BA40C6121ED942CC23E306A9039D650;700.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 302.
+(rerunfilecheck)             Checksum: 78E37651B7FB01CC51A8BF22EBB6609B;768.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 367.
  ) 
 Here is how much of TeX's memory you used:
- 8345 strings out of 483124
- 129684 string characters out of 2954754
- 411612 words of memory out of 3000000
- 23497 multiletter control sequences out of 15000+200000
- 542838 words of font info for 57 fonts, out of 3000000 for 9000
+ 9713 strings out of 483124
+ 155138 string characters out of 2954754
+ 435398 words of memory out of 3000000
+ 24825 multiletter control sequences out of 15000+200000
+ 544537 words of font info for 65 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 44i,11n,40p,1446b,398s stack positions out of 5000i,500n,10000p,200000b,50000s
- </Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1200.pk></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr6.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy6.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti12.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on /Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.pdf (9 pages, 243649 bytes).
+ 47i,11n,50p,1446b,448s stack positions out of 5000i,500n,10000p,200000b,50000s
+ </Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1200.pk></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr6.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy6.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti12.pfb></Users/pwrzosek/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on /Users/pwrzosek/Documents/GitHub/XXZ_model/TeX/xxz.pdf (11 pages, 451472 bytes).
 PDF statistics:
- 213 PDF objects out of 1000 (max. 8388607)
- 58 named destinations out of 1000 (max. 500000)
- 96 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 263 PDF objects out of 1000 (max. 8388607)
+ 77 named destinations out of 1000 (max. 500000)
+ 149 words of extra memory for PDF output out of 10000 (max. 10000000)
 
