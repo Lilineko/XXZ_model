@@ -4,9 +4,9 @@ using ExcelFiles
 
 function main()
     # parameters of the model
-    systemSize = 14
-    magnonInteractions = 1.0
-    anisotropy = 0.2 # allowed range is [0, 1); for anisotropy = 1 we have additional degeneration
+    systemSize = 12
+    magnonInteractions = -1000000.0
+    anisotropy = 0.0 # allowed range is [0, 1); for anisotropy = 1 we have additional degeneration
     couplingJ = -1.0
 
     # prepare and diagonalize the model
