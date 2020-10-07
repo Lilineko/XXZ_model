@@ -132,7 +132,7 @@ function applySpinFlipUp(position, state, subspace, basis, systemSize)
     for it in 1:dimensions
         coefficient = state[it]
         magnonRepresentation = getMagnonRepresentation(basis[subspace][it], systemSize)
-        if magnonRepresentation[position] == 0
+        if magnonRepresentation[position] == 0 # TODO: make sure rotation is not spoiling anything here
             magnonRepresentation[position] = 1
             newState = getStateIndex(magnonRepresentation, systemSize)
             index = searchsorted(basis[newSubspace], newState)[1]
@@ -158,6 +158,32 @@ function calculateOverlaps(groundSubspaceIndex, groundStateVector, factorization
     for position in 1:systemSize
         _, flippedState = applySpinFlipUp(position, groundStateVector, groundSubspaceIndex, basis, systemSize)
         result[:, position] .= mapToEigenBasis(flippedState, factorization[flippedSubspaceIndex].vectors)
+    end
+    result
+end
+
+function applySz(position, state, subspace, basis, systemSize)
+    dimensions = length(state)
+    result = zeros(Float64, dimensions)
+    for it in 1:dimensions
+        coefficient = state[it]
+        magnonRepresentation = getMagnonRepresentation(basis[subspace][it], systemSize)
+        if magnonRepresentation[position] == 0
+            coefficient *= -0.5 # Sz = n_i - 1/2
+        else
+            coefficient *= 0.5
+        end
+        result[it] += coefficient
+    end
+    (subspace, result)
+end
+
+function calculateSzOverlaps(groundSubspaceIndex, groundStateVector, factorization, basis, systemSize)
+    numberOfEigenstates = length(factorization[groundSubspaceIndex].values)
+    result = Array{Float64, 2}(undef, numberOfEigenstates, systemSize) # we know vectors have real coefficient thus overlaps must be real too
+    for position in 1:systemSize
+        _, newState = applySz(position, groundStateVector, groundSubspaceIndex, basis, systemSize)
+        result[:, position] .= mapToEigenBasis(newState, factorization[groundSubspaceIndex].vectors)
     end
     result
 end
@@ -189,20 +215,23 @@ function getSystemInfo(systemSize = 2, magnonInteractions = 1,  anisotropy = 0.0
         return (groundSubspaceIndex, groundStateSubspace)
     end
 
-    # apply spin flip to the ground state and calculate overlaps with eigenstates of the model
-    overlaps = calculateOverlaps(groundSubspaceIndex, groundStateVector, factorization, basis, systemSize)
-    if info == "overlap"
-        return overlaps
+    overlaps = Array{Float64,2}
+    if info == "S+-"
+        # apply spin flip to the ground state and calculate overlaps with eigenstates of the model
+        overlaps = calculateOverlaps(groundSubspaceIndex, groundStateVector, factorization, basis, systemSize)
+    elseif info == "Szz"
+        # calculate overlaps for Sz operators
+        overlaps = calculateSzOverlaps(groundSubspaceIndex, groundStateVector, factorization, basis, systemSize)
     end
 
     # merge system info
-    (groundSubspaceIndex, groundStateEnergy, factorization, overlaps)
+    (groundSubspaceIndex, groundStateEnergy, factorization, overlaps, info)
 end
 
-function calculateGreensFunctionValue(k, ω, groundSubspaceIndex, groundStateEnergy, factorization, overlaps)
+function calculateGreensFunctionValue(k, ω, groundSubspaceIndex, outerSubspaceIndex, groundStateEnergy, factorization, overlaps)
     numberOfEigenstates, systemSize = size(overlaps)
-    flipSubspaceIndex = 5 - groundSubspaceIndex
-    eigenValues = factorization[flipSubspaceIndex].values
+    # outerSubspaceIndex = 5 - groundSubspaceIndex
+    eigenValues = factorization[outerSubspaceIndex].values
     denominators = Vector{ComplexF64}(undef, numberOfEigenstates)
     for index in 1:numberOfEigenstates
         denominators[index] = ω - eigenValues[index] + groundStateEnergy
@@ -214,6 +243,7 @@ function calculateGreensFunctionValue(k, ω, groundSubspaceIndex, groundStateEne
         for jt in 1:systemSize
             rj = jt - 1
             leftOverlaps = overlaps[:, jt]
+            # overlaps are real so we dont have to conjugate leftOverlaps
             numerators = leftOverlaps .* rightOverlaps
             result += exp(-im * k * (ri - rj)) * sum(numerators ./ denominators)
         end
@@ -247,7 +277,11 @@ end
 # end
 
 function calculateSpectralFunction(kRange, ωRange, δ, systemInfo)
-    groundSubspaceIndex, groundStateEnergy, factorization, overlaps = systemInfo
+    groundSubspaceIndex, groundStateEnergy, factorization, overlaps, info = systemInfo
+    outerSubspaceIndex = groundSubspaceIndex
+    if info == "S+-"
+        outerSubspaceIndex = 5 - groundSubspaceIndex
+    end
     dimensions = (length(kRange), length(ωRange))
     result = Array{Float64, 2}(undef, dimensions[1], dimensions[2])
     println()
@@ -258,7 +292,7 @@ function calculateSpectralFunction(kRange, ωRange, δ, systemInfo)
         progress += 1
         print(" --> Evaluating Step : ", progress, "/", nSteps)
         for it in 1:dimensions[1]
-            result[it, jt] = (-1.0 / π) * imag(calculateGreensFunctionValue(kRange[it], ωRange[jt] + δ*im, groundSubspaceIndex, groundStateEnergy, factorization, overlaps))
+            result[it, jt] = (-1.0 / π) * imag(calculateGreensFunctionValue(kRange[it], ωRange[jt] + δ*im, groundSubspaceIndex, outerSubspaceIndex, groundStateEnergy, factorization, overlaps))
         end
         print("\r")
     end
@@ -276,4 +310,37 @@ function getNextFigureName(path)
         end
     end
     string(path, "fig", lpad(index + 1, 3, "0"), ".png")
+end
+
+function bogoliubov(mnm, kRange, anisotropy, couplingJ)
+    # rescaling J
+    J = couplingJ * (1.0 - mnm)
+
+    # tau parallel and tou perpendicular
+    tl = (1.0 + anisotropy) / 2.0
+    tp = -(1.0 - anisotropy) / 2.0
+    # tp = 0.0
+
+    # diagonal and offdiagonal coefficients of the model
+    # after the Fourier transform
+    V = k -> tl * cos(k) - 1.0 / (1.0 - mnm)
+    T = k -> 0.5 * tp * cos(k)
+
+    # (u_k)^2 + (v_k)^2
+    ssuv = k -> cosh(atanh(-2.0 * T(k) / V(k)))
+
+    # 2 u_k v_k
+    dmuv = k -> sinh(atanh(-2.0 * T(k) / V(k)))
+
+    # (v_k)^2
+    v2 = k -> 0.5 * (ssuv(k) - 1.0)
+
+    # background
+    ns = 40.0
+    bg = J * sum([(V(k) * v2(k) + T(k) * dmuv(k)) / ns for k in 0:(2pi / ns):(2pi - (pi / ns))])
+
+    # dispersion relation
+    ϵ = k -> J * (V(k) * ssuv(k) + 2.0 * T(k) * dmuv(k))
+
+    return ϵ.(kRange) .+ bg
 end
