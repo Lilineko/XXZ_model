@@ -230,7 +230,6 @@ end
 
 function calculateGreensFunctionValue(k, ω, groundSubspaceIndex, outerSubspaceIndex, groundStateEnergy, factorization, overlaps)
     numberOfEigenstates, systemSize = size(overlaps)
-    # outerSubspaceIndex = 5 - groundSubspaceIndex
     eigenValues = factorization[outerSubspaceIndex].values
     denominators = Vector{ComplexF64}(undef, numberOfEigenstates)
     for index in 1:numberOfEigenstates
@@ -316,7 +315,7 @@ function bogoliubov(mnm, kRange, anisotropy, couplingJ)
     # rescaling J
     J = couplingJ * (1.0 - mnm)
 
-    # tau parallel and tou perpendicular
+    # tau parallel and tau perpendicular
     tl = (1.0 + anisotropy) / 2.0
     tp = -(1.0 - anisotropy) / 2.0
     # tp = 0.0
@@ -343,4 +342,12 @@ function bogoliubov(mnm, kRange, anisotropy, couplingJ)
     ϵ = k -> J * (V(k) * ssuv(k) + 2.0 * T(k) * dmuv(k))
 
     return ϵ.(kRange) .+ bg
+end
+
+function readSpectralFunction(path)
+    data = readdlm(path)
+    kRange = unique(data[:, 1])
+    ωRange = unique(data[:, 2])
+    A = reshape(data[:, 3], length(kRange), length(ωRange))
+    return length(kRange) - 1, kRange, ωRange, A
 end
