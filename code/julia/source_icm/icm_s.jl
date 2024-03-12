@@ -8,12 +8,8 @@ if Sys.iswindows()
     LinearAlgebra.BLAS.set_num_threads(1)
 end
 
-dir = Dict(
-    "xxz" => "./02_impl/"
-)
-
-include(dir["xxz"] * "xxz.jl")
-include(dir["xxz"] * "spectral.jl")
+include("xxz.jl")
+include("spectral.jl")
 
 struct SPC
     size::Int64

@@ -132,7 +132,7 @@ function applySpinFlipUp(position, state, subspace, basis, systemSize)
     for it in 1:dimensions
         coefficient = state[it]
         magnonRepresentation = getMagnonRepresentation(basis[subspace][it], systemSize)
-        if magnonRepresentation[position] == 0 # TODO: make sure rotation is not spoiling anything here
+        if magnonRepresentation[position] == 0
             magnonRepresentation[position] = 1
             newState = getStateIndex(magnonRepresentation, systemSize)
             index = searchsorted(basis[newSubspace], newState)[1]
@@ -250,31 +250,6 @@ function calculateGreensFunctionValue(k, ω, groundSubspaceIndex, outerSubspaceI
     result / systemSize
 end
 
-# function calculateSpectralFunction(kRange, ωRange, δ, systemInfo)
-#     groundSubspaceIndex, groundStateEnergy, factorization, overlaps = systemInfo
-#     dimensions = (length(kRange), length(ωRange))
-#     result = Array{Float64, 2}(undef, dimensions[1], dimensions[2])
-#     println()
-#     println(" > Calculating Spectral Function : ")
-#     progress = 0
-#     nSteps = ceil(Int64, dimensions[2] / Threads.nthreads())
-#     Threads.@threads for jt in 1:dimensions[2]
-#         if Threads.threadid() == 1
-#             progress += 1
-#             print(" --> Evaluating Step : ", progress, "/", nSteps)
-#         end
-#         @simd for it in 1:dimensions[1]
-#             result[it, jt] = (-1.0 / π) * imag(calculateGreensFunctionValue(kRange[it], ωRange[jt] + δ*im, groundSubspaceIndex, groundStateEnergy, factorization, overlaps))
-#         end
-#         if Threads.threadid() == 1
-#             print("\r")
-#         end
-#     end
-#     println(" --> Evaluating Step : ", nSteps, "/", nSteps)
-#     println(" --> Evaluation Complete!")
-#     result
-# end
-
 function calculateSpectralFunction(kRange, ωRange, δ, systemInfo)
     groundSubspaceIndex, groundStateEnergy, factorization, overlaps, info = systemInfo
     outerSubspaceIndex = groundSubspaceIndex
@@ -299,6 +274,32 @@ function calculateSpectralFunction(kRange, ωRange, δ, systemInfo)
     println(" --> Evaluation Complete!")
     result
 end
+
+### Parallel version
+# function calculateSpectralFunction(kRange, ωRange, δ, systemInfo)
+#     groundSubspaceIndex, groundStateEnergy, factorization, overlaps = systemInfo
+#     dimensions = (length(kRange), length(ωRange))
+#     result = Array{Float64, 2}(undef, dimensions[1], dimensions[2])
+#     println()
+#     println(" > Calculating Spectral Function : ")
+#     progress = 0
+#     nSteps = ceil(Int64, dimensions[2] / Threads.nthreads())
+#     Threads.@threads for jt in 1:dimensions[2]
+#         if Threads.threadid() == 1
+#             progress += 1
+#             print(" --> Evaluating Step : ", progress, "/", nSteps)
+#         end
+#         @simd for it in 1:dimensions[1]
+#             result[it, jt] = (-1.0 / π) * imag(calculateGreensFunctionValue(kRange[it], ωRange[jt] + δ*im, groundSubspaceIndex, groundStateEnergy, factorization, overlaps))
+#         end
+#         if Threads.threadid() == 1
+#             print("\r")
+#         end
+#     end
+#     println(" --> Evaluating Step : ", nSteps, "/", nSteps)
+#     println(" --> Evaluation Complete!")
+#     result
+# end
 
 function getNextFigureName(path)
     fileNames = readdir(path)

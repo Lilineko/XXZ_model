@@ -18,6 +18,9 @@ function run(ωRange::Vector{Float64}, iDelta::Complex{Float64}, initialState::V
     return spectrum
 end
 
+"""
+    Desc.
+"""
 function calculateLanczos(initialState::Vector{Complex{Float64}}, model::Model, krylov::Krylov)
     diagonal = Float64[]
     offDiagonal = Float64[]

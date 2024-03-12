@@ -24,35 +24,8 @@ function main(info) #, systemSize)
     δ = 0.02
     A = calculateSpectralFunction(kRange, ωRange, δ, systemInfo)
 
-    # return figure
-    # return systemInfo
     return (systemSize, kRange, ωRange, A)
 end
-
-# @time figure = main("")
-# save(getNextFigureName(string(pwd(), "/figures/")), figure)
-
-
-# # calculation of mean number of magnons
-# mean_n = []
-# lRange = 2:2:10
-# for L in lRange
-#     @time gsInfo = main("", L)
-#     s = gsInfo[1]
-#     gs = gsInfo[3][s].vectors[:,1]
-#
-#     @time bsInfo = main("basis", L)
-#     bs = bsInfo[s]
-#
-#     push!(mean_n, sum([sum(getMagnonRepresentation(bs[it], L)) * gs[it]^2 for it in 1:length(gs)]) / L)
-# end
-#
-# display(scatter(1.0 ./ [x for x in lRange] , mean_n, xlim = (0, 0.55), ylim = (0, 0.1)))
-#
-# mean_n
-
-# calculations for linear plots
-@time systemInfoA = main("eigen")
 
 # calculations for linear plots
 @time systemSize, kRange, ωRange, A = main("S+-")
@@ -60,7 +33,6 @@ end
 
 # systemSize, kRange, ωRange, A = readSpectralFunction("./01_impl/results/A_L=16_m=1.0.txt")
 # systemSize, kRange, ωRange, B = readSpectralFunction("./01_impl/results/B_L=16_m=1.0.txt")
-
 
 # plot the result (linear)
 figure = plot()
